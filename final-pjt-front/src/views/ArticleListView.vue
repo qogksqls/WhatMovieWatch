@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Home</h1>
+    <h1>영화 한줄평</h1>
     <ul>
       <li v-for="article in articles" :key="article.pk">
         <!-- 작성자 -->
@@ -9,9 +9,9 @@
         <!-- 글 이동 링크 (제목) -->
         <router-link 
           :to="{ name: 'article', params: {articlePk: article.pk} }">
-          {{ article.title }}
+          <span>영화 제목 : </span>{{ article.title }}
         </router-link>
-
+          <h4>한줄평 : </h4> {{ article.content }}
         <!-- 댓글 개수/좋아요 개수 -->
         =>
         ({{ article.comment_count }}) | +{{ article.like_count }}

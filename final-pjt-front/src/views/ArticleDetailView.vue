@@ -16,7 +16,7 @@
 
     <!-- Article Like UI -->
     <div>
-      Likeit:
+      좋아요! : 
       <button
         @click="likeArticle(articlePk)"
       >{{ likeCount }}</button>
