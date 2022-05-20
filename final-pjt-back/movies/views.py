@@ -2,28 +2,31 @@
 # # vue 응용 실습 코드 활용하여 article의 좋아요, 댓글을 movie의 평점, 댓글로 변형할 예정.
 # # 명세서 관리자 뷰 파트=> vue로 프론트에서 구현할지?? admin 페이지에서 구현할지??
 
-# from django.shortcuts import get_object_or_404
-# from django.db.models import Count
+from django.shortcuts import get_object_or_404, get_list_or_404
+from django.db.models import Count
 
-# from rest_framework import status
-# from rest_framework.decorators import api_view
-# from rest_framework.response import Response
-# from .models import Article, Comment
-# from .serializers.article import ArticleListSerializer, ArticleSerializer
-# from .serializers.comment import CommentSerializer
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+from .models import Movie
+from .serializers import MovieSerializer
 
 
-# @api_view(['GET', 'POST'])
-# def article_list_or_create(request):
-
-#     def article_list():
-#         # comment 개수 추가
-#         articles = Article.objects.annotate(
-#             comment_count=Count('comments', distinct=True),
-#             like_count=Count('like_users', distinct=True)
-#         ).order_by('-pk')
-#         serializer = ArticleListSerializer(articles, many=True)
-#         return Response(serializer.data)
+@api_view(['GET', 'POST'])
+def movie_list_or_create(request):
+    if request.mothod == 'GET':
+        movies = get_list_or_404(Movie)
+        serializer = MovieSerializer(movies, many=True)
+        return Response(serializer.data)
+    # def article_list():
+    #     # comment 개수 추가
+    #     articles = Article.objects.annotate(
+    #         comment_count=Count('comments', distinct=True),
+    #         like_count=Count('like_users', distinct=True)
+    #     ).order_by('-pk')
+    #     serializer = ArticleListSerializer(articles, many=True)
+    #     return Response(serializer.data)
     
 #     def create_article():
 #         serializer = ArticleSerializer(data=request.data)
