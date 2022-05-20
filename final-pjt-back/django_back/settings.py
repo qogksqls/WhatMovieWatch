@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     # local apps
     'accounts',
     'articles',
+    'movies', 
+    
     # 3rd party apps
     'django_extensions',
     
