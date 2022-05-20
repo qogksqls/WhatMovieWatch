@@ -13,7 +13,8 @@ export default {
   name: 'CommentListForm',
   data() {
     return {
-      content: ''
+      content: '',
+      created_at: null,
     }
   },
   computed: {
@@ -22,7 +23,7 @@ export default {
   methods: {
     ...mapActions(['createComment']),
     onSubmit() {
-      this.createComment({ articlePk: this.article.pk, content: this.content, })
+      this.createComment({ articlePk: this.article.pk, content: this.content, created_at: this.createdat })
       this.content = ''
     }
   }

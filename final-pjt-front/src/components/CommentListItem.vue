@@ -4,8 +4,14 @@
       {{ comment.user.username }}
     </router-link>: 
     
-    <span v-if="!isEditing">{{ payload.content }}</span>
-
+    <span v-if="!isEditing">
+      {{ payload.content }}
+      <hr>
+      작성 시간: {{ payload.created_at }}
+      <hr>
+      수정 시간: {{ payload.updated_at }} (새로고침하세요)
+    </span>
+    <hr>
     <span v-if="isEditing">
       <input type="text" v-model="payload.content">
       <button @click="onUpdate">Update</button> |
@@ -31,7 +37,9 @@ export default {
       payload: {
         articlePk: this.comment.article,
         commentPk: this.comment.pk,
-        content: this.comment.content
+        content: this.comment.content,
+        created_at: this.comment.created_at,
+        updated_at: this.comment.updated_at
       },
     }
   },
