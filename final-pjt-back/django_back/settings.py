@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     # local apps
     'accounts',
     'articles',
-    'movies', 
+    # 'movies',
     
     # 3rd party apps
     'django_extensions',
@@ -157,7 +157,7 @@ AUTH_USER_MODEL = 'accounts.User'
 # CORS_ALLOWED_ORIGINS = [
 #     # Vue LocalHost
 #     'http://localhost:8080',
-#     'http://127.0.0.1:8001',
+#     'http://127.0.0.1:8000',
 # ]
 
 # 모두에게 교차출처 허용 (*)

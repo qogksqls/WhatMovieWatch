@@ -161,7 +161,7 @@ export default {
         .catch(err => console.error(err.response))
     },
 
-		createComment({ commit, getters }, { articlePk, content }) {
+		createComment({ commit, getters }, { articlePk, content, created_at }) {
       /* 댓글 생성
       POST: comments URL(댓글 입력 정보, token)
         성공하면
@@ -169,7 +169,7 @@ export default {
         실패하면
           에러 메시지 표시
       */
-      const comment = { content }
+      const comment = { content, created_at }
 
       axios({
         url: drf.articles.comments(articlePk),
@@ -183,7 +183,7 @@ export default {
         .catch(err => console.error(err.response))
     },
 
-    updateComment({ commit, getters }, { articlePk, commentPk, content }) {
+    updateComment({ commit, getters }, { articlePk, commentPk, content, created_at }) {
       /* 댓글 수정
       PUT: comment URL(댓글 입력 정보, token)
         성공하면
@@ -191,7 +191,7 @@ export default {
         실패하면
           에러 메시지 표시
       */
-      const comment = { content }
+      const comment = { content, created_at }
 
       axios({
         url: drf.articles.comment(articlePk, commentPk),
