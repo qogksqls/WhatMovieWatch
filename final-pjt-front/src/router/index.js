@@ -13,6 +13,8 @@ import SignupView from '@/views/SignupView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import NotFound404 from '../views/NotFound404.vue'
 
+import MovieListView from '@/views/MovieListView'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -70,6 +72,11 @@ const routes = [
     path: '/articles/:articlePk/edit',
     name: 'articleEdit',
     component: ArticleEditView
+  },
+  {
+    path: '/movies',
+    name: 'movieList',
+    components: MovieListView,
   },
   {
     path: '/404',
