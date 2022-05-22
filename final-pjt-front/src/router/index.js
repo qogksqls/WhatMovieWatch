@@ -13,7 +13,7 @@ import SignupView from '@/views/SignupView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import NotFound404 from '../views/NotFound404.vue'
 
-import MovieListView from '@/views_movie/MovieListView'
+import MovieListView from '@/views_movie/MovieListView.vue'
 
 Vue.use(VueRouter)
 
@@ -54,7 +54,7 @@ const routes = [
     component: ProfileView,
   },
   {
-    path: '/',  // Home
+    path: '/articles',
     name: 'articles',
     component: ArticleListView
   },
@@ -74,9 +74,9 @@ const routes = [
     component: ArticleEditView
   },
   {
-    path: '/movies',
-    name: 'movieList',
-    components: MovieListView,
+    path: '/movies',  // Home
+    name: 'movies',
+    component: MovieListView,
   },
   {
     path: '/404',

@@ -14,7 +14,7 @@ import { mapActions, mapGetters } from 'vuex'
 import axios from 'axios'
 
 const API_KEY = '30e5384d094325bb014c21f1e7ddd39c'
-const API_URL = 'https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US'
+const API_URL = 'https://api.themoviedb.org/3/search/movie'
 
 export default {
     name: 'MovieList',
@@ -28,11 +28,7 @@ export default {
                 key: API_KEY,
 
             }
-            axios({
-                method: 'get',
-                url: API_URL,
-                params,
-            })
+            axios.get(API_URL, { params })
                 .then(res => {
                     console.log(res)
                 })

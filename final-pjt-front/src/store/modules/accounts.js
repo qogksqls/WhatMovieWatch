@@ -5,7 +5,7 @@ import drf from '@/api/drf'
 
 export default {
   // namespaced: true,
-  
+
   state: {
     token: localStorage.getItem('token') || '' ,
     currentUser: {},
@@ -83,7 +83,7 @@ export default {
       })
         .then(() => {
           dispatch('removeToken')
-          alert('성공적으로 logout!')
+          alert('Logout 완료되셨습니다.')
           router.push({ name: 'login' })
         })
         .error(err => {
