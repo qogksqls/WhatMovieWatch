@@ -13,7 +13,7 @@ import SignupView from '@/views/SignupView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import NotFound404 from '../views/NotFound404.vue'
 
-import MovieListView from '@/views/MovieListView'
+import MovieListView from '@/views_movie/MovieListView'
 
 Vue.use(VueRouter)
 

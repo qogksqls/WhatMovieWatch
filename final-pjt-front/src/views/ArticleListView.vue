@@ -14,7 +14,7 @@
 
         <!-- 댓글 개수/좋아요 개수 -->
         =>
-        ({{ article.comment_count }}) | +{{ article.like_count }}
+        댓글 수: {{ article.comment_count }} | 좋아요: {{ article.like_count }}
 
       </li>
     </ul>
