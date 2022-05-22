@@ -18,6 +18,7 @@
               {{ article.content}}
             </div>
             <div class="remainder">
+              {{ article.created_at.slice(0, 19) }}
               {{ article.user.username }}
               ------------------
               댓글 수: {{ article.comment_count }} | 좋아요: {{ article.like_count }}
@@ -35,10 +36,10 @@
   export default {
     name: 'ArticleList',
     computed: {
-      ...mapGetters(['articles', 'isLoggedIn'])
+      ...mapGetters(['articles', 'isLoggedIn']),
     },
     methods: {
-      ...mapActions(['fetchArticles'])
+      ...mapActions(['fetchArticles']),
     },
     created() {
       this.fetchArticles()
@@ -57,12 +58,15 @@ a {
 }
 .title {
   color: black;
+  font-size: large;
 }
 .content {
   color: gray;
+  font-size: small;
 }
 .remainder {
-  color: black
+  color: black;
+  font-size: small;
 }
 .container {
   display: flex;
