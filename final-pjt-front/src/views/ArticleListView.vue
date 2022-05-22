@@ -1,6 +1,11 @@
 <template>
   <div>
-    <h1>영화 정보 게시판</h1>
+    <div class="container">
+      <h1>영화 정보 게시판</h1>
+      <ul v-if="isLoggedIn" class="create-article">
+          <router-link :to="{ name: 'articleNew' }">글쓰기</router-link>
+      </ul>
+    </div>
       <ul>
         <li v-for="article in articles" :key="article.pk" class="article">
           <!-- 글 이동 링크 (제목) -->
@@ -18,8 +23,6 @@
               댓글 수: {{ article.comment_count }} | 좋아요: {{ article.like_count }}
             </div>
           </router-link>
-
-          <!-- 댓글 개수/좋아요 개수 -->
         </li>
       </ul>
    
@@ -32,7 +35,7 @@
   export default {
     name: 'ArticleList',
     computed: {
-      ...mapGetters(['articles'])
+      ...mapGetters(['articles', 'isLoggedIn'])
     },
     methods: {
       ...mapActions(['fetchArticles'])
@@ -60,5 +63,9 @@ a {
 }
 .remainder {
   color: black
+}
+.container {
+  display: flex;
+  justify-content: space-between;
 }
 </style>

@@ -14,10 +14,6 @@
       <li v-if="!isLoggedIn">
         <router-link :to="{ name: 'signup' }">Signup</router-link>
       </li>
-
-      <li v-if="isLoggedIn">
-        <router-link :to="{ name: 'articleNew' }">New</router-link>
-      </li>
       <li v-if="isLoggedIn">
         <router-link :to="{ name: 'profile', params: { username } }">
           {{ currentUser.username }}'s page
