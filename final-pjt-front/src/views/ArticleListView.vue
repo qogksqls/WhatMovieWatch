@@ -7,7 +7,7 @@
       </ul>
     </div>
       <ul>
-        <li v-for="article in articles" :key="article.pk" class="article">
+        <li v-for="article in articles" :key="article.pk" class="article" style="list-style-type: none;">
           <!-- 글 이동 링크 (제목) -->
           <router-link 
             :to="{ name: 'article', params: {articlePk: article.pk} }">

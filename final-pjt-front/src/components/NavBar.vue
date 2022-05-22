@@ -1,25 +1,25 @@
 <template>
   <nav>
-    <ul>
-      <li>
+    <ul class="ultag">
+      <li class="litag">
         <router-link :to="{ name: 'movies' }">HOME</router-link>
       </li>
-      <li>
+      <li class="litag">
         <router-link :to="{ name: 'articles' }">영화 정보 게시판</router-link>
       </li>
 
-      <li v-if="!isLoggedIn">
+      <li v-if="!isLoggedIn" class="litag">
         <router-link :to="{ name: 'login' }">Login</router-link>
       </li>
-      <li v-if="!isLoggedIn">
+      <li v-if="!isLoggedIn" class="litag">
         <router-link :to="{ name: 'signup' }">Signup</router-link>
       </li>
-      <li v-if="isLoggedIn">
+      <li v-if="isLoggedIn" class="litag">
         <router-link :to="{ name: 'profile', params: { username } }">
           {{ currentUser.username }}'s page
         </router-link>
       </li>
-      <li v-if="isLoggedIn">
+      <li v-if="isLoggedIn" class="litag">
         <router-link :to="{ name: 'logout' }">Logout</router-link>
       </li>
     </ul>
@@ -40,4 +40,13 @@
   }
 </script>
 
-<style></style>
+<style>
+.ultag {
+  display: flex;
+  justify-content: flex-end;
+}
+.litag {
+  margin-left: 20px;
+  list-style-type: none;
+}
+</style>
