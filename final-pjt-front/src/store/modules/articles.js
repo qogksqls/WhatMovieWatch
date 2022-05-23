@@ -34,7 +34,11 @@ export default {
         method: 'get',
         headers: getters.authHeader,
       })
-        .then(res => commit('SET_ARTICLES', res.data))
+        // .then(res => commit('SET_ARTICLES', res.data))
+        .then(res => {
+          commit('SET_ARTICLES', res.data)
+          console.log(res.data)
+        })
         .catch(err => console.error(err.response))
     },
 
