@@ -15,24 +15,11 @@ import NotFound404 from '../views/NotFound404.vue'
 
 import MovieListView from '@/views_movie/MovieListView.vue'
 
+import theAdmin from '@/components/theAdmin.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
-  /*
-  accounts
-    /login => LoginView
-    /logout => LogoutView
-    /signup => SignupView
-    /profile/:username => ProfileView
-  
-  articles
-    / => ArticleListView
-    /articles/new => ArticleNewView
-    /articles/:articlePk => ArticleDetailView
-    /articles/:articlePk/edit => ArticleEditView
-    /404 => NotFound404
-    * => /404
-  */
   {
     path: '/login',
     name: 'login',
@@ -77,6 +64,11 @@ const routes = [
     path: '/movies',  // Home
     name: 'movies',
     component: MovieListView,
+  },
+  {
+    path: '/admin',  // 관리자 페이지
+    name: 'admin',
+    component: theAdmin,
   },
   {
     path: '/404',

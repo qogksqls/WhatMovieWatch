@@ -13,7 +13,6 @@
       |
       <button @click="deleteArticle(articlePk)">Delete</button>
     </div>
-
     <!-- Article Like UI -->
     <div>
       Likeit:
@@ -35,8 +34,6 @@
   import { mapGetters, mapActions } from 'vuex'
   import CommentList from '@/components/CommentList.vue'
 
-
-
   export default {
     name: 'ArticleDetail',
     components: { CommentList },
@@ -46,7 +43,7 @@
       }
     },
     computed: {
-      ...mapGetters(['isAuthor', 'article']),
+      ...mapGetters(['isAuthor', 'article', 'isSuperuser']),
       likeCount() {
         return this.article.like_users?.length
       }
