@@ -2,20 +2,18 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
 
-import ArticleListView from '@/views/ArticleListView.vue'
-import ArticleDetailView from '@/views/ArticleDetailView.vue'
-import ArticleNewView from '@/views/ArticleNewView'
-import ArticleEditView from '@/views/ArticleEditView'
+import ArticleListView from '@/views/community/ArticleListView.vue'
+import ArticleDetailView from '@/views/community/ArticleDetailView.vue'
+import ArticleNewView from '@/views/community/ArticleNewView'
+import ArticleEditView from '@/views/community/ArticleEditView'
 
-import LoginView from '@/views/LoginView.vue'
-import LogoutView from '@/views/LogoutView.vue'
-import SignupView from '@/views/SignupView.vue'
-import ProfileView from '@/views/ProfileView.vue'
-import NotFound404 from '../views/NotFound404.vue'
+import LoginView from '@/views/accounts/LoginView.vue'
+import LogoutView from '@/views/accounts/LogoutView.vue'
+import SignupView from '@/views/accounts/SignupView.vue'
+import ProfileView from '@/views/accounts/ProfileView.vue'
+import NotFound404 from '../views/accounts/NotFound404.vue'
 
-import MovieListView from '@/views_movie/MovieListView.vue'
-
-import theAdmin from '@/components/theAdmin.vue'
+import MovieListView from '@/views/movies/MovieListView'
 
 Vue.use(VueRouter)
 
@@ -64,11 +62,6 @@ const routes = [
     path: '/movies',  // Home
     name: 'movies',
     component: MovieListView,
-  },
-  {
-    path: '/admin',  // 관리자 페이지
-    name: 'admin',
-    component: theAdmin,
   },
   {
     path: '/404',
