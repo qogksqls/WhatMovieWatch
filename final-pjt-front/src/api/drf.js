@@ -29,8 +29,8 @@ export default {
   movies: {
     // /movies/
     movies: () => HOST + VERSION + MOVIES,
-    // /movies/1/ # 영화 평점 => rating
     movie: moviePk => HOST + VERSION + MOVIES + `${moviePk}/`,
+    // /movies/1/ # 영화 평점 => rating
     likeMovie: moviePk => HOST + VERSION + MOVIES + `${moviePk}/` + 'rating/',
   }
 }

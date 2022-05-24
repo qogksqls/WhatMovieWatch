@@ -43,7 +43,7 @@
       }
     },
     computed: {
-      ...mapGetters(['isAuthor', 'article', 'isSuperuser']),
+      ...mapGetters(['isAuthor', 'article']),
       likeCount() {
         return this.article.like_users?.length
       }

@@ -14,6 +14,7 @@ import ProfileView from '@/views/accounts/ProfileView.vue'
 import NotFound404 from '../views/accounts/NotFound404.vue'
 
 import MovieListView from '@/views/movies/MovieListView'
+import MovieDetailView from '@/views/movies/MovieDetailView'
 
 Vue.use(VueRouter)
 
@@ -62,6 +63,11 @@ const routes = [
     path: '/movies',  // Home
     name: 'movies',
     component: MovieListView,
+  },
+  {
+    path: '/movies/:moviePK',
+    name: 'movie',
+    component: MovieDetailView,
   },
   {
     path: '/404',
