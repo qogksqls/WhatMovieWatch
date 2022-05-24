@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
 
 from rest_framework import status
 from rest_framework.response import Response
@@ -13,7 +12,6 @@ from django.contrib.auth import get_user_model
 
 
 # 인기순으로 영화 제목 보내기 (selectBox)
-# @login_required
 @api_view(['GET', 'POST'])
 def home(request):
     if request.method == 'GET':
@@ -22,7 +20,6 @@ def home(request):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 # 영화 상세 데이터
-# @login_required
 @api_view(['GET'])
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
