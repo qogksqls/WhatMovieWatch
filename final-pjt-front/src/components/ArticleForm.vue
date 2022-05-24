@@ -5,7 +5,7 @@
       <input v-model="newArticle.title" type="text" id="title" />
     </div>
     <div>
-      <label for="content">contnet: </label>
+      <label for="content">content: </label>
       <textarea v-model="newArticle.content" type="text" id="content"></textarea>
     </div>
     <div>
