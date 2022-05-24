@@ -25,7 +25,9 @@
     <hr />
     <!-- Comment UI -->
     <comment-list :comments="article.comments"></comment-list>
-
+    <router-link :to="{ name: 'articles' }">
+      <button>Back</button>
+    </router-link>
   </div>
 </template>
 

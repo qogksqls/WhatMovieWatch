@@ -1,127 +1,60 @@
-# # movies/views.py
-# # vue 응용 실습 코드 활용하여 article의 좋아요, 댓글을 movie의 평점, 댓글로 변형할 예정.
-# # 명세서 관리자 뷰 파트=> vue로 프론트에서 구현할지?? admin 페이지에서 구현할지??
+from django.shortcuts import render
 
-from django.shortcuts import get_object_or_404, get_list_or_404
-from django.db.models import Count
-
-from rest_framework import status
-from rest_framework.decorators import api_view
+# Create your views here.
+from django.shortcuts import render, get_object_or_404
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from .models import Genre, Movie, Rating
+from .serializers import GenreSerializer, MovieSerializer, RatingSerializer
 
-from .models import Movie
-from .serializers import MovieSerializer
+@api_view(['GET'])
+def movie_list(request):
+    movies = Movie.objects.all()
+    serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data)
 
+
+@api_view(['GET'])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
+def movie_detail(request, movie_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    serializer = MovieSerializer(movie)
+    return Response(serializer.data)
 
 @api_view(['GET', 'POST'])
-def movie_list_or_create(request):
-    if request.mothod == 'GET':
-        movies = get_list_or_404(Movie)
-        serializer = MovieSerializer(movies, many=True)
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
+def rating_list_create(request, movie_id):
+    movie = get_object_or_404(Movie, id=movie_id)
+    if request.method=='GET':
+        ratings = movie.ratings.all()
+        serializer= RatingSerializer(ratings, many=True)
         return Response(serializer.data)
-    # def article_list():
-    #     # comment 개수 추가
-    #     articles = Article.objects.annotate(
-    #         comment_count=Count('comments', distinct=True),
-    #         like_count=Count('like_users', distinct=True)
-    #     ).order_by('-pk')
-    #     serializer = ArticleListSerializer(articles, many=True)
-    #     return Response(serializer.data)
-    
-#     def create_article():
-#         serializer = ArticleSerializer(data=request.data)
-#         if serializer.is_valid(raise_exception=True):
-#             serializer.save(user=request.user)
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        serializer = RatingSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(user=request.user, movie=movie)
+            return Response(serializer.data)
 
-#     if request.method == 'GET':
-#         return article_list()
-#     elif request.method == 'POST':
-#         return create_article()
+@api_view(['DELETE'])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
+def rating_delete(request, rating_pk):
+    rating = get_object_or_404(Rating, pk=rating_pk)
+    rating.delete()
+    return Response({'id': rating_pk})
 
-
-# @api_view(['GET', 'PUT', 'DELETE'])
-# def article_detail_or_update_or_delete(request, article_pk):
-#     article = get_object_or_404(Article, pk=article_pk)
-
-#     def article_detail():
-#         serializer = ArticleSerializer(article)
-#         return Response(serializer.data)
-
-#     def update_article():
-#         if request.user == article.user:
-#             serializer = ArticleSerializer(instance=article, data=request.data)
-#             if serializer.is_valid(raise_exception=True):
-#                 serializer.save()
-#                 return Response(serializer.data)
-
-#     def delete_article():
-#         if request.user == article.user:
-#             article.delete()
-#             return Response(status=status.HTTP_204_NO_CONTENT)
-
-#     if request.method == 'GET':
-#         return article_detail()
-#     elif request.method == 'PUT':
-#         if request.user == article.user:
-#             return update_article()
-#     elif request.method == 'DELETE':
-#         if request.user == article.user:
-#             return delete_article()
-
-
-# @api_view(['POST'])
-# def like_article(request, article_pk):
-#     article = get_object_or_404(Article, pk=article_pk)
-#     user = request.user
-#     if article.like_users.filter(pk=user.pk).exists():
-#         article.like_users.remove(user)
-#         serializer = ArticleSerializer(article)
-#         return Response(serializer.data)
-#     else:
-#         article.like_users.add(user)
-#         serializer = ArticleSerializer(article)
-#         return Response(serializer.data)
-
-
-# @api_view(['POST'])
-# def create_comment(request, article_pk):
-#     user = request.user
-#     article = get_object_or_404(Article, pk=article_pk)
-    
-#     serializer = CommentSerializer(data=request.data)
-#     if serializer.is_valid(raise_exception=True):
-#         serializer.save(article=article, user=user)
-
-#         # 기존 serializer 가 return 되면, 단일 comment 만 응답으로 받게됨.
-#         # 사용자가 댓글을 입력하는 사이에 업데이트된 comment 확인 불가 => 업데이트된 전체 목록 return 
-#         comments = article.comments.all()
-#         serializer = CommentSerializer(comments, many=True)
-#         return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-
-# @api_view(['PUT', 'DELETE'])
-# def comment_update_or_delete(request, article_pk, comment_pk):
-#     article = get_object_or_404(Article, pk=article_pk)
-#     comment = get_object_or_404(Comment, pk=comment_pk)
-
-#     def update_comment():
-#         if request.user == comment.user:
-#             serializer = CommentSerializer(instance=comment, data=request.data)
-#             if serializer.is_valid(raise_exception=True):
-#                 serializer.save()
-#                 comments = article.comments.all()
-#                 serializer = CommentSerializer(comments, many=True)
-#                 return Response(serializer.data)
-
-#     def delete_comment():
-#         if request.user == comment.user:
-#             comment.delete()
-#             comments = article.comments.all()
-#             serializer = CommentSerializer(comments, many=True)
-#             return Response(serializer.data)
-    
-#     if request.method == 'PUT':
-#         return update_comment()
-#     elif request.method == 'DELETE':
-#         return delete_comment()
+@api_view(['PUT'])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
+def rating_update(request,movie_pk):
+    movie = get_object_or_404(Movie, id=movie_pk)
+    rating = get_object_or_404(Rating, user=request.user)
+    rating.delete()
+    serializer = RatingSerializer(data=request.data)
+    if serializer.is_valid(raise_exception=True):
+        serializer.save(user=request.user, movie=movie)
+        return Response(serializer.data)

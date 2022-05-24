@@ -9,7 +9,7 @@
       <hr>
       작성 시간: {{ payload.created_at }}
       <hr>
-      수정 시간: {{ payload.updated_at }} (새로고침하세요)
+      수정 시간: {{ payload.updated_at }}
     </span>
     <hr>
     <span v-if="isEditing">
@@ -38,8 +38,8 @@ export default {
         articlePk: this.comment.article,
         commentPk: this.comment.pk,
         content: this.comment.content,
-        created_at: this.comment.created_at,
-        updated_at: this.comment.updated_at
+        created_at: this.comment.created_at.slice(0, 19),
+        updated_at: this.comment.updated_at.slice(0, 19),
       },
     }
   },
