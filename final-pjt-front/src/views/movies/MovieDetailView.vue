@@ -1,5 +1,8 @@
 <template>
-  <h1>{{ movie.title }}</h1>
+  <div>
+    <h1>디테일페이지</h1>
+    <h1>{{ movie.title }}</h1>
+  </div>
 </template>
 
 <script>

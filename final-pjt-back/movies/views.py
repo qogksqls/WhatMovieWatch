@@ -1,82 +1,20 @@
-# from django.shortcuts import render
-
-# # Create your views here.
-# from django.shortcuts import render, get_object_or_404
-# from rest_framework.decorators import api_view, permission_classes, authentication_classes
-# from rest_framework.permissions import IsAuthenticated
-# from rest_framework.response import Response
-# from rest_framework_jwt.authentication import JSONWebTokenAuthentication
-# from .models import Genre, Movie, Rating
-# from .serializers import GenreSerializer, MovieSerializer, RatingSerializer
-
-# @api_view(['GET'])
-# def movie_list(request):
-#     movies = Movie.objects.all()
-#     serializer = MovieSerializer(movies, many=True)
-#     return Response(serializer.data)
-
-
-# @api_view(['GET'])
-# @authentication_classes([JSONWebTokenAuthentication])
-# @permission_classes([IsAuthenticated])
-# def movie_detail(request, movie_pk):
-#     movie = get_object_or_404(Movie, pk=movie_pk)
-#     serializer = MovieSerializer(movie)
-#     return Response(serializer.data)
-
-# @api_view(['GET', 'POST'])
-# @authentication_classes([JSONWebTokenAuthentication])
-# @permission_classes([IsAuthenticated])
-# def rating_list_create(request, movie_id):
-#     movie = get_object_or_404(Movie, id=movie_id)
-#     if request.method=='GET':
-#         ratings = movie.ratings.all()
-#         serializer= RatingSerializer(ratings, many=True)
-#         return Response(serializer.data)
-#     else:
-#         serializer = RatingSerializer(data=request.data)
-#         if serializer.is_valid(raise_exception=True):
-#             serializer.save(user=request.user, movie=movie)
-#             return Response(serializer.data)
-
-# @api_view(['DELETE'])
-# @authentication_classes([JSONWebTokenAuthentication])
-# @permission_classes([IsAuthenticated])
-# def rating_delete(request, rating_pk):
-#     rating = get_object_or_404(Rating, pk=rating_pk)
-#     rating.delete()
-#     return Response({'id': rating_pk})
-
-# @api_view(['PUT'])
-# @authentication_classes([JSONWebTokenAuthentication])
-# @permission_classes([IsAuthenticated])
-# def rating_update(request,movie_pk):
-#     movie = get_object_or_404(Movie, id=movie_pk)
-#     rating = get_object_or_404(Rating, user=request.user)
-#     rating.delete()
-#     serializer = RatingSerializer(data=request.data)
-#     if serializer.is_valid(raise_exception=True):
-#         serializer.save(user=request.user, movie=movie)
-#         return Response(serializer.data)
 from django.shortcuts import get_object_or_404
-from django.conf import settings
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
-from rest_framework.permissions import IsAuthenticated
-from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework.decorators import api_view
+
 from .models import Movie, Genre
 from .serializers import MovieSerializer, MovieRandomSerializer, GenreSerializer
 
-# user 모델 가져오기
 from django.contrib.auth import get_user_model
 
-# Create your views here.
+
 # 인기순으로 영화 제목 보내기 (selectBox)
+# @login_required
 @api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
 def home(request):
     if request.method == 'GET':
         movies = Movie.objects.order_by('-popularity')[:50]
@@ -84,8 +22,8 @@ def home(request):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 # 영화 상세 데이터
+# @login_required
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     serializer = MovieSerializer(movie)
@@ -93,7 +31,6 @@ def movie_detail(request, movie_pk):
 
 # tinder에 보낼 랜덤 영화
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def random(request):
     movies = Movie.objects.order_by('?')[:200]
     serializer = MovieRandomSerializer(movies, many=True)
@@ -102,7 +39,6 @@ def random(request):
 # GET : genre 데이터를 리턴
 # POST : tinder로 받아온 선호 장르 입력
 @api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
 def genres(request):
     person = get_object_or_404(get_user_model(), username=request.user)
     # 해당 유저가 어떤 장르를 가장 좋아하는지 체크하기 위한 Json(dict type)
@@ -123,7 +59,6 @@ def genres(request):
 
 # 장르 데이터를 기반으로 영화 추천
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def recommend(request):
     person = get_object_or_404(get_user_model(), username=request.user)
     person_genre_dict = person.genre_dict
