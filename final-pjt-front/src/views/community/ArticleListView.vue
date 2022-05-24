@@ -3,9 +3,9 @@
     <div class="container">
       <h1>영화 정보 게시판</h1>
       <ul v-if="isLoggedIn" class="create-article">
-          <router-link :to="{ name: 'articleNew' }" style="color:black">
+        <router-link :to="{ name: 'articleNew' }" style="color:black">
           <h3>글쓰기</h3>
-          </router-link>
+        </router-link>
       </ul>
     </div>
       <ul>

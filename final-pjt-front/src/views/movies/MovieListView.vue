@@ -1,15 +1,17 @@
 <template>
   <div>
     <h1>Home</h1>
-    <ul>
-      <li v-for="movie in movies" :key="movie.id">
-        <router-link 
-          :to="{ name: 'movie', params: {moviePk: movie.id} }">
-          {{ movie.title }}
-          {{ movie.id }}
-        </router-link>
-      </li>
-    </ul>
+    <div>
+      <ul>
+        <li class="card" v-for="movie in movies" :key="movie.id" style="list-style: none;">
+          <router-link 
+            :to="{ name: 'movie', params: {moviePk: movie.id} }">
+            
+            <img :src="getImgUrl(movie.poster_path)" alt="poster">
+          </router-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 <script>
@@ -21,7 +23,11 @@
       ...mapGetters(['movies'])
     },
     methods: {
-      ...mapActions(['fetchMovies'])
+      ...mapActions(['fetchMovies']),
+      getImgUrl(url) {
+        const imgUrl = `https://image.tmdb.org/t/p/w185/${url}`
+        return imgUrl
+    },
     },
     created() {
       this.fetchMovies()
@@ -30,4 +36,7 @@
 </script>
 
 <style>
+ul {
+  padding-left: 0;
+}
 </style>
