@@ -1,34 +1,29 @@
 <template>
-  <div class="home">
-    <header>
-      <h2>요즘 인기있는</h2>
-    </header>
-    {{ movies }}
+  <div>
+    <h1>Home</h1>
     <ul>
       <li v-for="movie in movies" :key="movie.pk">
-        {{ movie }}
+        <!-- 글 이동 링크 (제목) -->
+        <router-link 
+          :to="{ name: 'movie', params: {moviePk: movie.pk} }">
+          {{ movie.title }}
+        </router-link>
+
       </li>
     </ul>
-
-    <!-- MovieCards
-    <div class="popular-list row row-cols-1 row-cols-md-5 gy-3">
-      <MovieCard
-        v-for="(movie, idx) in movies"
-        :key="idx"
-        :movie="movie"/>
-    </div> -->
+   
   </div>
 </template>
 <script>
   import { mapActions, mapGetters } from 'vuex'
 
   export default {
-    name: 'MovieListView',
+    name: 'MovieList',
     computed: {
-      ...mapGetters(['movies', 'isLoggedIn']),
+      ...mapGetters(['movies'])
     },
     methods: {
-      ...mapActions(['fetchMovies']),
+      ...mapActions(['fetchMovies'])
     },
     created() {
       this.fetchMovies()
