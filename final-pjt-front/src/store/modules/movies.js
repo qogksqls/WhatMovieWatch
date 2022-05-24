@@ -5,21 +5,19 @@ import drf from '@/api/drf'
 // import _ from 'lodash'
 // import accounts from './accounts'
 
+
 export default {
   // namespaced: true,
   state: {
     movies: [],
-    movie: {},
   },
 
   getters: {
     movies: state => state.movies,
-    // movie: state => state.movie,
   },
 
   mutations: {
     SET_MOVIES: (state, movies) => state.movies = movies,
-    SET_MOVIE: (state, movie) => state.movie = movie,
   },
 
   actions: {
@@ -29,22 +27,8 @@ export default {
         method: 'get',
         headers: getters.authHeader,
       })
-        .then(res => {
-          commit('SET_MOVIES', res.data)
-        })
+        .then(res => commit('SET_MOVIES', res.data))
         .catch(err => console.error(err.response))
     },
-    // fetchMovies({ commit }, token) {
-    //   axios({
-    //     method: 'GET',
-    //     url: drf.movies.movies(),
-    //     headers: token,
-    //   })
-    //   .then(res => {
-    //     commit('SET_MOVIES', res.data)
-    //     // commit('GET_MOVIE_TITLES', res.data)
-    //   })
-    //   .catch(err => console.log(err))
-    // },
   },
 }

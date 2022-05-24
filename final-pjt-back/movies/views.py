@@ -76,7 +76,6 @@ from django.contrib.auth import get_user_model
 # Create your views here.
 # 인기순으로 영화 제목 보내기 (selectBox)
 @api_view(['GET', 'POST'])
-@authentication_classes([JSONWebTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def home(request):
     if request.method == 'GET':
@@ -86,7 +85,6 @@ def home(request):
 
 # 영화 상세 데이터
 @api_view(['GET'])
-@authentication_classes([JSONWebTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
@@ -95,7 +93,6 @@ def movie_detail(request, movie_pk):
 
 # tinder에 보낼 랜덤 영화
 @api_view(['GET'])
-@authentication_classes([JSONWebTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def random(request):
     movies = Movie.objects.order_by('?')[:200]
@@ -105,7 +102,6 @@ def random(request):
 # GET : genre 데이터를 리턴
 # POST : tinder로 받아온 선호 장르 입력
 @api_view(['GET', 'POST'])
-@authentication_classes([JSONWebTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def genres(request):
     person = get_object_or_404(get_user_model(), username=request.user)
@@ -127,7 +123,6 @@ def genres(request):
 
 # 장르 데이터를 기반으로 영화 추천
 @api_view(['GET'])
-@authentication_classes([JSONWebTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def recommend(request):
     person = get_object_or_404(get_user_model(), username=request.user)

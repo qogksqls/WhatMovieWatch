@@ -1,5 +1,6 @@
-const HOST = 'http://localhost:8000/api/v1/'
+const HOST = 'http://localhost:8000/'
 
+const VERSION = 'api/v1/'
 const ACCOUNTS = 'accounts/'
 const ARTICLES = 'articles/'
 const COMMENTS = 'comments/'
@@ -27,7 +28,7 @@ export default {
   },
   movies: {
     // /movies/
-    movies: () => HOST + MOVIES,
+    movies: () => HOST + VERSION + MOVIES,
     // /movies/1/ # 영화 평점 => rating
     movie: moviePk => HOST + MOVIES + `${moviePk}/`,
     likeMovie: moviePk => HOST + MOVIES + `${moviePk}/` + 'rating/',
