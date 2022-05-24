@@ -2,25 +2,25 @@
   <nav>
     <ul class="ultag">
       <li class="litag">
-        <router-link :to="{ name: 'movies' }">HOME</router-link>
+        <router-link :to="{ name: 'movies' }" style="color:black">HOME</router-link>
       </li>
       <li class="litag">
-        <router-link :to="{ name: 'articles' }">영화 정보 게시판</router-link>
+        <router-link :to="{ name: 'articles' }" style="color:black">영화 정보 게시판</router-link>
       </li>
 
       <li v-if="!isLoggedIn" class="litag">
-        <router-link :to="{ name: 'login' }">Login</router-link>
+        <router-link :to="{ name: 'login' }" style="color:black">Login</router-link>
       </li>
       <li v-if="!isLoggedIn" class="litag">
-        <router-link :to="{ name: 'signup' }">Signup</router-link>
+        <router-link :to="{ name: 'signup' }" style="color:black">Signup</router-link>
       </li>
       <li v-if="isLoggedIn" class="litag">
-        <router-link :to="{ name: 'profile', params: { username } }">
-          {{ currentUser.username }}'s page
+        <router-link :to="{ name: 'profile', params: { username } }" style="color:black">
+          my page
         </router-link>
       </li>
       <li v-if="isLoggedIn" class="litag">
-        <router-link :to="{ name: 'logout' }">Logout</router-link>
+        <router-link :to="{ name: 'logout' }" style="color:black">Logout</router-link>
       </li>
     </ul>
   </nav>
@@ -41,6 +41,9 @@
 </script>
 
 <style>
+/* nav {
+  background-color: black;
+} */
 .ultag {
   display: flex;
   justify-content: flex-end;
