@@ -17,7 +17,7 @@ export default {
     currentUser: state => state.currentUser,
     profile: state => state.profile,
     authError: state => state.authError,
-    authHeader: state => ({ Authorization: `Token ${state.token}`})
+    authHeader: state => ({ Authorization: `Token ${state.token}`}),
   },
 
   mutations: {
@@ -98,7 +98,7 @@ export default {
           method: 'get',
           headers: getters.authHeader,
         })
-          .then(res => commit('SET_CURRENT_USER', res.data))
+          .then(res => commit('SET_CURRENT_USER', res.data, console.log(res)))
           .catch(err => {
             if (err.response.status === 401) {
               dispatch('removeToken')

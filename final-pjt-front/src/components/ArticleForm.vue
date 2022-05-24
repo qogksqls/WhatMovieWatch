@@ -11,6 +11,11 @@
     <div>
       <button>{{ action }}</button>
     </div>
+    <div>
+      <router-link :to="{ name: 'articles' }">
+        <button>Back</button>
+      </router-link>
+    </div>
   </form>
 </template>
 
