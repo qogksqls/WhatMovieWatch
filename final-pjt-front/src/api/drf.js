@@ -26,6 +26,10 @@ export default {
       HOST + ARTICLES + `${articlePk}/` + COMMENTS + `${commentPk}/`,
   },
   movies: {
+    // /movies/
     movies: () => HOST + MOVIES,
+    // /movies/1/ # 영화 평점 => rating
+    movie: moviePk => HOST + MOVIES + `${moviePk}/`,
+    likeMovie: moviePk => HOST + MOVIES + `${moviePk}/` + 'rating/',
   }
 }
