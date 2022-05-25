@@ -39,3 +39,4 @@ export default {
     review: (moviePk, reviewPK) => HOST + VERSION + MOVIES + `${moviePk}/` + REVIEWS + `${reviewPK}/`,
   }
 }
+

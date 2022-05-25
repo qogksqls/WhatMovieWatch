@@ -30,4 +30,4 @@ class MovieRandomSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Movie
-        fields = ('id', 'title', 'poster_path', 'genre_ids')
+        fields = ('id', 'title', 'poster_path', 'genre_ids', 'overview', )
