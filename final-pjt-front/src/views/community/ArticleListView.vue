@@ -2,7 +2,8 @@
   <div>
     <h1>영화 정보 게시판</h1>
     <div v-if="isLoggedIn" class="create-article">
-      <router-link :to="{ name: 'articleNew' }" placeholder="새 글을" style="color:black">
+      <router-link :to="{ name: 'articleNew' }" style="color:black">
+      새 글을 작성해주세요!
       </router-link>
     </div>
     <ul>
@@ -49,9 +50,10 @@
 
 <style>
 h1 {
-  color: white;
+  color: rgb(5, 0, 2);
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 }
 .create-article {
   margin: 30px;
