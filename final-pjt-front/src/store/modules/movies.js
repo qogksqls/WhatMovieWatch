@@ -8,6 +8,7 @@ export default {
     movie: {},
     //tinder(임시)
     randomMovies: [],
+    randomMovie: {},
     genres: [],
 
   },
@@ -62,6 +63,21 @@ export default {
       .then(res => commit('GET_RANDOM_MOVIES', res.data))
       .catch(err => console.error(err.response))
     },
+
+    getRandomMovie({ commit, getters }, moviePk) {
+      axios({
+        url: drf.movies.movie(moviePk),
+        method: 'get',
+        headers: getters.authHeader,
+      })
+        .then(res => commit('SET_MOVIE', res.data))
+        .catch(err => {
+          console.error(err.response)
+          if (err.response.data === 404) {
+            router.push({ name: 'NotFound404' })
+          }
+        })
+    },
     createReview({ commit, getters }, { moviePK, content, vote }) {
       const review = { content, vote }
 
@@ -107,4 +123,4 @@ export default {
         }
     },
   },
-}
+}
