@@ -10,7 +10,7 @@
         <div class="card-body">
           <h5 class="card-title" >{{ randomMovie.title }}</h5>
           <!-- <p class="card-text">{{ randomMovie.overview }}</p> -->
-          <a href="#" class="btn btn-white" style= "background-color: #FFDAB9;"> Movie Detail </a>
+          <!-- <a href="#" class="btn btn-white" style= "background-color: #FFDAB9;"> Movie Detail </a> -->
         </div>
       </div>
       </div>

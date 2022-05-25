@@ -22,8 +22,4 @@
 </script>
 
 <style>
-.nav {
-  margin: 0;
-  padding: 8px 12px;
-}
 </style>

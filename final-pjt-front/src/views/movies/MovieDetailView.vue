@@ -12,6 +12,9 @@
         {{ movie.vote_count }}명 참여
       </div>
       <div>
+        {{ movie.popularity}}
+      </div>
+      <div>
         장르: {{ movie.genre_ids}}
       </div>
       <div>

@@ -68,7 +68,7 @@ const routes = [
     component: MovieListView,
   },
   {
-    path: '/movies/:moviePK',
+    path: '/movies/:moviePk',
     name: 'movie',
     component: MovieDetailView,
   },
