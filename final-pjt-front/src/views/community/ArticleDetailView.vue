@@ -32,7 +32,7 @@
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import CommentList from '@/components/CommentList.vue'
+  import CommentList from '@/components/community/CommentList.vue'
 
   export default {
     name: 'ArticleDetail',

@@ -1,15 +1,14 @@
-<template>
+ <template>
   <li class="comment-list-item">
     <router-link :to="{ name: 'profile', params: { username: comment.user.username } }">
       {{ comment.user.username }}
     </router-link>: 
-    
     <span v-if="!isEditing">
       {{ payload.content }}
-      <hr>
-      작성 시간: {{ payload.created_at }}
-      <hr>
-      수정 시간: {{ payload.updated_at }}
+      <div>
+        <span v-if="comment.created_at === comment.updated_at">{{ comment.created_at.slice(0, 19) }}</span>
+        <span v-if="comment.created_at !== comment.updated_at">{{ comment.updated_at.slice(0, 19) }} (수정됨)</span>
+      </div>
     </span>
     <hr>
     <span v-if="isEditing">
@@ -38,8 +37,6 @@ export default {
         articlePk: this.comment.article,
         commentPk: this.comment.pk,
         content: this.comment.content,
-        created_at: this.comment.created_at.slice(0, 19),
-        updated_at: this.comment.updated_at.slice(0, 19),
       },
     }
   },

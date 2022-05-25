@@ -4,22 +4,25 @@
     <div>
       <img :src="getImgUrl(movie.poster_path)" alt="poster">
     </div>
-
-    <!-- <review-list></review-list> -->
-
-    <router-link :to="{ name: 'movies' }">
-      <button>Back</button>
-    </router-link>
+    <h2>
+      tmdb 평점: {{ movie.vote_average}}
+    </h2>
+    <review-list :reviews="movie.reviews"></review-list>
+    <div>
+      <router-link :to="{ name: 'movies' }">
+        <button>Back</button>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-// import ReviewList from '@/views/movies/ReviewListForm.vue'
+import ReviewList from '@/components/movies/ReviewList.vue'
 
 export default {
   name: 'MovieDetailView',
-  // components: { ReviewList },
+  components: { ReviewList },
   data() {
     return {
         moviePk: this.$route.params.moviePk,

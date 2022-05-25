@@ -20,7 +20,9 @@
               {{ article.content}}
             </div>
             <div class="remainder">
-              {{ article.created_at.slice(0, 19) }}
+              <span v-if="article.created_at === article.updated_at">{{ article.created_at.slice(0, 19) }}</span>
+              <span v-if="article.created_at !== article.updated_at">{{ article.updated_at.slice(0, 19) }}(수정됨)</span>
+              
               {{ article.user.username }}
               ------------------
               댓글 수: {{ article.comment_count }} | 좋아요: {{ article.like_count }}

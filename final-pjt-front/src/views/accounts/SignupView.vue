@@ -26,7 +26,7 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import AccountErrorList from '@/components/AccountErrorList.vue'
+  import AccountErrorList from '@/components/accounts/AccountErrorList.vue'
 
   export default {
     name: 'SignupView',

@@ -42,9 +42,13 @@ class Comment(models.Model):
 
 # 0524
 ## Back-end
-
+- movie 정보들 json으로 받아서 loaddata로 DB 저장
+- 프론트에서 로그인한 유저 판단하는거 넣었는데 백에 login_required 썼다가 충돌 오류난거 깨달아서 백에 있는 걸 삭제
 ## Front-end
+- Home에서 Movie 데이터 50개를 출력
+- 포스터 클릭하면 detail 페이지로 넘어가 영화 상세 정보 출력까지 구현
 
+- 추가로, 서로 브랜치 꼬여서 충돌난거 고치려다가 gitlab에 있는 final 프로젝트 삭제하고 다시 remote 연결하려 했는데 그 과정에서 branch를 master로 바꿨다가 파일 다 날아간줄 알고 멘붕... 다시 쓰던 branch로 바꾸니 파일들 돌아옴. 천만다행...
 # 0525
 ## Back-end
 

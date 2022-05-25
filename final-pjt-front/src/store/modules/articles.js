@@ -111,8 +111,8 @@ export default {
         .catch(err => console.error(err.response))
     },
 
-		createComment({ commit, getters }, { articlePk, content, created_at }) {
-      const comment = { content, created_at }
+		createComment({ commit, getters }, { articlePk, content, created_at, updated_at }) {
+      const comment = { content, created_at, updated_at }
 
       axios({
         url: drf.articles.comments(articlePk),
@@ -126,8 +126,8 @@ export default {
         .catch(err => console.error(err.response))
     },
 
-    updateComment({ commit, getters }, { articlePk, commentPk, content, created_at }) {
-      const comment = { content, created_at }
+    updateComment({ commit, getters }, { articlePk, commentPk, content, updated_at }) {
+      const comment = { content, updated_at }
 
       axios({
         url: drf.articles.comment(articlePk, commentPk),
