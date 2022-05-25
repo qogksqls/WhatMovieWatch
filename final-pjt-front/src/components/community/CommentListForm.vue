@@ -15,6 +15,7 @@ export default {
     return {
       content: '',
       created_at: null,
+      updated_at: null
     }
   },
   computed: {
@@ -23,7 +24,12 @@ export default {
   methods: {
     ...mapActions(['createComment']),
     onSubmit() {
-      this.createComment({ articlePk: this.article.pk, content: this.content, created_at: this.createdat })
+      this.createComment({
+        articlePk: this.article.pk,
+        content: this.content,
+        created_at: this.created_at,
+        updated_at: this.updated_at,
+      })
       this.content = ''
     }
   }
