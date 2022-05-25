@@ -33,8 +33,9 @@ export default {
     movie: moviePk => HOST + VERSION + MOVIES + `${moviePk}/`,
     // /movies/1/ # 영화 평점 => rating
     likeMovie: moviePk => HOST + VERSION + MOVIES + `${moviePk}/` + 'rating/',
+    random: () => HOST + VERSION + MOVIES + 'random/',
+    likeGenre: () => HOST + VERSION + MOVIES + 'recommend/',
     reviews: moviePk => HOST + VERSION + MOVIES + `${moviePk}/` + REVIEWS,
-    review: (moviePk, reviewPK) =>
-      HOST + VERSION + MOVIES + `${moviePk}/` + REVIEWS + `${reviewPK}/`,
+    review: (moviePk, reviewPK) => HOST + VERSION + MOVIES + `${moviePk}/` + REVIEWS + `${reviewPK}/`,
   }
-}
+}

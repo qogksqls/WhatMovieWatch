@@ -1,11 +1,12 @@
 <template>
     <div>
-      <li v-for="randomMovie in randomMovies" :key="randomMovie.id">{{ randomMovie.title }}
-        <div>
-          <img :src="getImgUrl(randomMovie.poster_path)" alt="poster">
-        </div>
-      </li>
-
+      <router-link :to="{ name: 'movie' }">
+        <li v-for="randomMovie in randomMovies" :key="randomMovie.id">{{ randomMovie.title }}
+          <div>
+            <img :src="getImgUrl(randomMovie.poster_path)" alt="poster">
+          </div>
+        </li>
+      </router-link>
     </div>
     
 </template>

@@ -6,16 +6,24 @@ export default {
   state: {
     movies: [],
     movie: {},
+    //tinder(임시)
+    randomMovies: [],
+    genres: [],
+
   },
 
   getters: {
     movies: state => state.movies,
     movie: state => state.movie,
+    randomMovies: state => state.randomMovies,
+    genres: state => state.genres,
+
   },
 
   mutations: {
     SET_MOVIES: (state, movies) => state.movies = movies,
     SET_MOVIE: (state, movie) => state.movie = movie,
+    GET_RANDOM_MOVIES: (state, randomMovies) => state.randomMovies = randomMovies,
     SET_MOVIE_REVIEWS: (state, reviews) => state.movie.reviews = reviews,
   },
 
@@ -44,7 +52,16 @@ export default {
           }
         })
     },
-    
+
+    getRandomMovies({ commit, getters }) {
+      axios({
+        method: 'GET',
+        url: drf.movies.random(),
+        headers: getters.authHeader,
+      })
+      .then(res => commit('GET_RANDOM_MOVIES', res.data))
+      .catch(err => console.error(err.response))
+    },
     createReview({ commit, getters }, { moviePK, content, vote }) {
       const review = { content, vote }
 
@@ -88,6 +105,6 @@ export default {
             })
             .catch(err => console.error(err.response))
         }
-      },
+    },
   },
-}
+}
