@@ -24,7 +24,7 @@ class MovieSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Movie
-        fields = ('id', 'user',  'title', 'poster_path', 'genre_ids', 'vote_average', 'reviews')
+        fields = '__all__'
 
 class MovieRandomSerializer(serializers.ModelSerializer):
 

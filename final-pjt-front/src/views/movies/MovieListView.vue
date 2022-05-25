@@ -5,7 +5,7 @@
       <ul>
         <li class="card" v-for="movie in movies" :key="movie.id">
           <router-link 
-            :to="{ name: 'movie' }">
+            :to="{ name: 'movie', params: { moviePk: movie.id } }">
             
             <img :src="getImgUrl(movie.poster_path)" alt="poster">
             => {{ movie.title }}
