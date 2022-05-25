@@ -44,8 +44,8 @@ export default {
           }
         })
     },
-    createReview({ commit, getters }, { moviePK, content }) {
-      const review = { content }
+    createReview({ commit, getters }, { moviePK, content, vote }) {
+      const review = { content, vote }
 
       axios({
         url: drf.movies.reviews(moviePK),

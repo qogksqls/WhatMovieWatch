@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
-    <hr />
+    <nav-bar class="nav"></nav-bar>
     <router-view></router-view>
   </div>
 </template>
@@ -22,4 +21,9 @@
   }
 </script>
 
-<style></style>
+<style>
+.nav {
+  margin: 0;
+  padding: 8px 12px;
+}
+</style>

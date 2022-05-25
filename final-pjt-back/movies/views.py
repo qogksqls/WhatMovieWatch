@@ -30,7 +30,7 @@ def movie_detail(request, movie_pk):
 # tinder에 보낼 랜덤 영화
 @api_view(['GET'])
 def random(request):
-    movies = Movie.objects.order_by('?')[:200]
+    movies = Movie.objects.order_by('?')[:10]
     serializer = MovieRandomSerializer(movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
