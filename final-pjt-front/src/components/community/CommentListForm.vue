@@ -1,8 +1,8 @@
 <template>
   <form @submit.prevent="onSubmit" class="comment-list-form">
-    <label for="comment">comment: </label>
-    <input type="text" id="comment" v-model="content" required>
-    <button>Comment</button>
+    <label for="comment"></label>
+    <input style="width: 100%; height: 50px;" type="text" id="comment" v-model="content" required placeholder="댓글을 입력하세요.">
+    <button class="btn btn-primary">Comment</button>
   </form>
 </template>
 
@@ -37,9 +37,4 @@ export default {
 </script>
 
 <style>
-.comment-list-form {
-  border: 1px solid black;
-  margin: 1rem;
-  padding: 1rem;
-}
 </style>
