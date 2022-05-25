@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import ArticleForm from '@/components/ArticleForm.vue'
+import ArticleForm from '@/components/community/ArticleForm.vue'
 import { mapGetters, mapActions } from 'vuex'
   export default {
     name: 'AritcleEditView',

@@ -1,24 +1,17 @@
-# from django.urls import path
-# from . import views
-
-# app_name="movies"
-
-# urlpatterns = [
-#     path('', views.movie_list),
-#     path('detail/<int:movie_pk>/', views.movie_detail),
-#     path('detail/<int:movie_id>/rating_list_create/', views.rating_list_create),
-#     path('detail/<int:rating_pk>/rating_delete/', views.rating_delete),
-#     path('detail/<int:movie_pk>/rating_update/', views.rating_update),
-# ]
 from django.urls import path
 from . import views
 
 app_name = 'movies'
 
 urlpatterns = [
+    # movies
     path('', views.home),
     path('<int:movie_pk>/', views.movie_detail),
-    path('random/', views.random),
-    path('genres/', views.genres),
-    path('recommend/', views.recommend),
+    # reviews
+    path('<int:movie_pk>/reviews/', views.create_review),
+    path('<int:movie_pk>/reviews/<int:review_pk>/', views.review_update_or_delete)
+
+    # path('random/', views.random),
+    # path('genres/', views.genres),
+    # path('recommend/', views.recommend),
 ]
