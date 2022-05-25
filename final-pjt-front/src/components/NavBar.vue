@@ -7,7 +7,12 @@
       <li class="litag">
         <router-link :to="{ name: 'articles' }" style="color:beige">영화 정보 게시판</router-link>
       </li>
-
+      <li class="litag">
+        <router-link :to="{ name: 'recommend' }">추천!</router-link>
+      </li>
+      <li class="litag">
+        <router-link :to="{ name: 'random' }">랜덤추천!</router-link>
+      </li>      
       <li v-if="!isLoggedIn" class="litag">
         <router-link :to="{ name: 'login' }" style="color:beige">Login</router-link>
       </li>
