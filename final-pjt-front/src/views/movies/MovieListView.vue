@@ -6,7 +6,7 @@
         <li v-for="movie in movies" :key="movie.id" style="list-style: none">
           <router-link 
             :to="{ name: 'movie', params: { moviePk: movie.id } }">
-            <img :src="getImgUrl(movie.poster_path)" alt="poster">
+            <img :src="getImgUrl(movie.poster_path)" alt="poster" style="height: 20rem; width: 12rem;">
 
           </router-link>
         </li>
