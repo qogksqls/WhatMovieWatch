@@ -1,19 +1,17 @@
 <template>
-  <form @submit.prevent="onSubmit">
+  <form @submit.prevent="onSubmit" class="form-box">
     <div>
-      <label for="title">title: </label>
-      <input v-model="newArticle.title" type="text" id="title" />
+      <label for="title"></label>
+      <input v-model="newArticle.title" placeholder="글 제목" type="text" id="title" style="width: 100%; height: 50px; background-color: antiquewhite;" />
     </div>
     <div>
-      <label for="content">content: </label>
-      <textarea v-model="newArticle.content" type="text" id="content"></textarea>
+      <label for="content"></label>
+      <textarea v-model="newArticle.content" type="text" id="content" placeholder="내용" style="width: 100%; height: 300px; background-color: antiquewhite;"></textarea>
     </div>
-    <div>
-      <button>{{ action }}</button>
-    </div>
-    <div>
+    <div class="buttons">
+      <button class="btn btn-primary">{{ action }}</button> |
       <router-link :to="{ name: 'articles' }">
-        <button>Back</button>
+        <button class="btn btn-secondary">Back</button>
       </router-link>
     </div>
   </form>
@@ -54,4 +52,14 @@ import { mapActions } from 'vuex'
   }
 </script>
 
-<style></style>
+<style>
+.form-box {
+  border: 1px solid rgb(245, 204, 204);
+  margin-left: 32px;
+  margin-right: 32px;
+}
+.buttons {
+  display: flex;
+  justify-content: end;
+}
+</style>

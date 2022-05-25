@@ -2,8 +2,8 @@
   <div>
     <h1>영화 정보 게시판</h1>
     <div v-if="isLoggedIn" class="create-article">
-      <router-link :to="{ name: 'articleNew' }" style="color:black">
-      새 글을 작성해주세요!
+      <router-link :to="{ name: 'articleNew' }" style="color: gray;">
+        <p>새 글을 작성해주세요!</p>
       </router-link>
     </div>
     <ul>
@@ -56,17 +56,23 @@ h1 {
   margin-top: 10px;
 }
 .create-article {
-  margin: 30px;
-  border: 1px solid black;
+  margin-left: 32px;
+  margin-right: 32px;
+  border: 1px solid rgb(141, 117, 72);
+  cursor: pointer;
+  height: 2rem;
+}
+.article {
+  border: 1px solid gray;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-right: 32px;
 }
 .article:hover {
-  border: 1px solid gray;
-  /* border-radius: ; */
-  cursor: pointer;
-  background-color: rgb(252, 251, 249);
+  background-color: rgb(239, 232, 227);
 }
 a {
-  text-decoration: solid;
+  text-decoration: none;
 }
 .title {
   color: black;
