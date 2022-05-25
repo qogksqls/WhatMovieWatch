@@ -48,5 +48,5 @@ export default {
 .container:hover {
   transform : scale(1.3);
   transition : all 250ms ease-in;
-}
+} 
 </style>
