@@ -6,8 +6,7 @@
         <li v-for="movie in movies" :key="movie.id" style="list-style: none">
           <router-link 
             :to="{ name: 'movie', params: { moviePk: movie.id } }">
-            <img :src="getImgUrl(movie.poster_path)" alt="poster" style="height: 20rem; width: 12rem;">
-
+            <img class="container" :src="getImgUrl(movie.poster_path)" alt="poster" style="height: 18rem; width: 15rem;">
           </router-link>
         </li>
       </ul>
@@ -35,8 +34,16 @@
   }
 </script>
 
-<style>
+<style scoped>
+ *{ font-family: 'Luckiest Guy', cursive;}
+
 .poppular-list:hover {
   padding: 1px;
 }
+
+.container:hover {
+  transform : scale(1.3);
+  transition : all 250ms ease-in;
+}
+
 </style>

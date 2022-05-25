@@ -2,7 +2,7 @@
   <nav>
     <ul class="ultag">
       <li class="litag">
-        <router-link :to="{ name: 'movies' }">HOME</router-link>
+        <router-link :to="{ name: 'movies' }">홈</router-link>
       </li>
       <li class="litag">
         <router-link :to="{ name: 'articles' }">영화 정보 게시판</router-link>
@@ -14,18 +14,18 @@
         <router-link :to="{ name: 'random' }">추천~!</router-link>
       </li>      
       <li v-if="!isLoggedIn" class="litag">
-        <router-link :to="{ name: 'login' }">Login</router-link>
+        <router-link :to="{ name: 'login' }">로그인</router-link>
       </li>
       <li v-if="!isLoggedIn" class="litag">
-        <router-link :to="{ name: 'signup' }">Signup</router-link>
+        <router-link :to="{ name: 'signup' }">회원가입</router-link>
       </li>
       <li v-if="isLoggedIn" class="litag">
         <router-link :to="{ name: 'profile', params: { username } }">
-          my page
+          마이페이지
         </router-link>
       </li>
       <li v-if="isLoggedIn" class="litag">
-        <router-link :to="{ name: 'logout' }">Logout</router-link>
+        <router-link :to="{ name: 'logout' }">로그아웃</router-link>
       </li>
     </ul>
   </nav>
@@ -45,7 +45,9 @@
   }
 </script>
 
-<style>
+<style scoped>
+ *{ font-family: 'Noto Sans KR', sans-serif;}
+ 
 .ultag {
   background-color: #FFDAB9;
   list-style-type: none;

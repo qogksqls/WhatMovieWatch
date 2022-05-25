@@ -44,7 +44,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+ *{ font-family: 'Noto Sans KR', sans-serif;}
+
 .my-articles {
   border: 1px black;
 }

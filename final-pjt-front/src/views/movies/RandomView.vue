@@ -3,7 +3,7 @@
     <div v-for="randomMovie in randomMovies" :key="randomMovie.id" style="margin: 10px;">
       <router-link :to="{ name: 'movie', params: { moviePk: randomMovie.id } }">
         <div>
-          <img :src="getImgUrl(randomMovie.poster_path)" alt="poster" style="height: 16rem; width: 12rem;">
+          <img class="container" :src="getImgUrl(randomMovie.poster_path)" alt="poster" style="height: 18rem; width: 15rem;">
         </div>
       </router-link>
     </div>
@@ -43,5 +43,10 @@ export default {
   margin-top: 65px;
   flex-wrap: wrap;
   float: left;
+}
+
+.container:hover {
+  transform : scale(1.3);
+  transition : all 250ms ease-in;
 }
 </style>

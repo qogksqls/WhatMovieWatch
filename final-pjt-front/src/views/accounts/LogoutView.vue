@@ -25,4 +25,6 @@
   }
 </script>
 
-<style></style>
+<style scoped>
+ *{ font-family: 'Luckiest Guy', cursive;}
+ </style>

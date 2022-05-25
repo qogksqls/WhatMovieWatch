@@ -16,7 +16,7 @@
         <input v-model="credentials.password" type="password" id="password" required />
       </div>
 
-      <button>Login</button>
+      <button>LOGIN</button>
     </form>
   </div>
 </template>
@@ -47,4 +47,6 @@
   }
 </script>
 
-<style></style>
+<style scoped>
+ *{ font-family: 'Luckiest Guy', cursive;}
+</style>
