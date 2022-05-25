@@ -3,11 +3,12 @@
     <h1>Home</h1>
     <div>
       <ul>
-        <li class="card" v-for="movie in movies" :key="movie.id" style="list-style: none;">
+        <li class="card" v-for="movie in movies" :key="movie.id">
           <router-link 
-            :to="{ name: 'movie', params: {moviePk: movie.id} }">
+            :to="{ name: 'movie' }">
             
             <img :src="getImgUrl(movie.poster_path)" alt="poster">
+            => {{ movie.title }}
           </router-link>
         </li>
       </ul>
@@ -27,7 +28,7 @@
       getImgUrl(url) {
         const imgUrl = `https://image.tmdb.org/t/p/w185/${url}`
         return imgUrl
-    },
+      },
     },
     created() {
       this.fetchMovies()
