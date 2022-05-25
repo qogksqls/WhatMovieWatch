@@ -22,7 +22,7 @@
           @click="dialog = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
-        <img id="logo-image" src="@/assets/images/logo.png"/>
+        <img id="logo-image" src="@/assets/logo.png"/>
       </div>
       <div class="movie-detail-body">
         <div class="movie-detail-poster">
@@ -50,7 +50,7 @@
                 <div class="movie-vote">
                   {{ movie.vote_average }}
                 </div>
-                <img id="movie-star" src="@/assets/images/star.png">
+                <img id="movie-star" src="@/assets/logo.png">
               </div>
             </div>
             <!-- info overview -->
@@ -68,14 +68,6 @@
               해당 영화는 줄거리가 제공되지 않습니다.
             </div>
           </div>
-          <div class="movie-detail-lower">
-            <!-- youtube -->
-            <div class="movie-youtube-area">
-              관련 영상
-              <hr>
-              <YoutubeList :title="movie.title"/>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -84,12 +76,9 @@
 </template>
 
 <script>
-import YoutubeList from '@/components/movies/YoutubeList'
+
 export default {
   name: 'MovieCard',
-  components: {
-    YoutubeList
-  },
   props: {
     movie: {
       type: Object,
@@ -106,7 +95,7 @@ export default {
   },
   computed: {
     imgSrc: function () {
-      return "https://image.tmdb.org/t/p/original" + this.movie.poster_path
+      return "https://image.tmdb.org/t/p/w185/" + this.movie.poster_path
     },
   },
 }

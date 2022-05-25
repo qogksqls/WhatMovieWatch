@@ -16,6 +16,9 @@ import NotFound404 from '../views/accounts/NotFound404.vue'
 import MovieListView from '@/views/movies/MovieListView'
 import MovieDetailView from '@/views/movies/MovieDetailView'
 
+import RecommendView from '@/views/movies/RecommendView'
+import RandomView from '@/views/movies/RandomView'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -57,7 +60,7 @@ const routes = [
   {
     path: '/articles/:articlePk/edit',
     name: 'articleEdit',
-    component: ArticleEditView
+    component: ArticleEditView,
   },
   {
     path: '/movies',  // Home
@@ -68,6 +71,16 @@ const routes = [
     path: '/movies/:moviePK',
     name: 'movie',
     component: MovieDetailView,
+  },
+  {
+    path: '/recommend',
+    name: 'recommend',
+    component: RecommendView,
+  },
+  {
+    path: '/movies/random',
+    name: 'random',
+    component: RandomView,
   },
   {
     path: '/404',
