@@ -5,7 +5,24 @@
       <img :src="getImgUrl(movie.poster_path)" alt="poster">
     </div>
     <h2>
-      tmdb 평점: {{ movie.vote_average}}
+      <div>
+        tmdb 평점: {{ movie.vote_average}}
+      </div>
+      <div>
+        {{ movie.vote_count }}명 참여
+      </div>
+      <div>
+        장르: {{ movie.genre_ids}}
+      </div>
+      <div>
+        overview: {{ movie.overview }}
+      </div>
+      <div>
+        원제목: {{ movie.original_title }}
+      </div>
+      <div>
+        개봉일: {{ movie.release_date}}
+      </div>
     </h2>
     <review-list :reviews="movie.reviews"></review-list>
     <div>
