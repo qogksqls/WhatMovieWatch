@@ -1,9 +1,12 @@
 <template>
   <div>
     <form @submit.prevent="onSubmit" class="review-list-form">
-      <label for="review">review: </label>
-      <input type="text" v-model="content" required>
-      <button>Review</button>
+      <div>
+        평점: <input type="number" min="1" max="10" placeholder="1" v-model="vote" required>
+      </div>
+        <label for="review"></label>
+        <input type="text" placeholder="감상평을 등록해주세요." v-model="content" required>
+      <button>등록</button>
     </form>
   </div>
 </template>
@@ -16,6 +19,7 @@ export default {
     data() {
       return {
         content: '',
+        vote: null,
       }
     },
     computed: {
@@ -27,8 +31,10 @@ export default {
         this.createReview({
           moviePK: this.movie.id,
           content: this.content,
+          vote: this.vote,
         })
         this.content = ''
+        this.vote = null
       }
     }
 }
