@@ -2,23 +2,26 @@
   <div>
     <h1>{{ profile.username }}</h1>
 
-    <h2>작성한 글</h2>
-    <ul>
-      <li v-for="article in profile.articles" :key="article.pk">
-        <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
-          {{ article.title }}
-        </router-link>
-      </li>
-    </ul>
-
-    <h2>좋아요 한 글</h2>
-    <ul>
-      <li v-for="article in profile.like_articles" :key="article.pk">
-        <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
-          {{ article.title }}
-        </router-link>
-      </li>
-    </ul>
+    <div class="my-articles">
+      <h2>작성한 글</h2>
+      <ul>
+        <li v-for="article in profile.articles" :key="article.pk" style="list-style: none">
+          <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
+            {{ article.title }}
+          </router-link>
+        </li>
+      </ul>
+    </div>
+    <div class="like-it">
+      <h2>좋아요 한 글</h2>
+      <ul>
+        <li v-for="article in profile.like_articles" :key="article.pk" style="list-style: none">
+          <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
+            {{ article.title }}
+          </router-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -40,3 +43,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.my-articles {
+  border: 1px black;
+}
+</style>

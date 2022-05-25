@@ -6,33 +6,24 @@ export default {
   state: {
     movies: [],
     movie: {},
-<<<<<<< HEAD
-=======
     //tinder(임시)
     randomMovies: [],
     genres: [],
 
->>>>>>> 0475df88bfd4abd3dca85c7e083a7c99dce8d9e1
   },
 
   getters: {
     movies: state => state.movies,
     movie: state => state.movie,
-<<<<<<< HEAD
-=======
     randomMovies: state => state.randomMovies,
     genres: state => state.genres,
 
->>>>>>> 0475df88bfd4abd3dca85c7e083a7c99dce8d9e1
   },
 
   mutations: {
     SET_MOVIES: (state, movies) => state.movies = movies,
     SET_MOVIE: (state, movie) => state.movie = movie,
-<<<<<<< HEAD
-=======
     GET_RANDOM_MOVIES: (state, randomMovies) => state.randomMovies = randomMovies,
->>>>>>> 0475df88bfd4abd3dca85c7e083a7c99dce8d9e1
     SET_MOVIE_REVIEWS: (state, reviews) => state.movie.reviews = reviews,
   },
 
@@ -61,9 +52,6 @@ export default {
           }
         })
     },
-<<<<<<< HEAD
-    
-=======
 
     getRandomMovies({ commit, getters }) {
       axios({
@@ -74,7 +62,6 @@ export default {
       .then(res => commit('GET_RANDOM_MOVIES', res.data))
       .catch(err => console.error(err.response))
     },
->>>>>>> 0475df88bfd4abd3dca85c7e083a7c99dce8d9e1
     createReview({ commit, getters }, { moviePK, content, vote }) {
       const review = { content, vote }
 
@@ -118,12 +105,6 @@ export default {
             })
             .catch(err => console.error(err.response))
         }
-<<<<<<< HEAD
-      },
-  },
-}
-=======
     },
   },
 }
->>>>>>> 0475df88bfd4abd3dca85c7e083a7c99dce8d9e1

@@ -1,14 +1,13 @@
 <template>
   <div>
-    <h1>Home</h1>
+    <h1>POPULAR MOVIE RANKING</h1>
     <div>
-      <ul>
-        <li class="card" v-for="movie in movies" :key="movie.id">
+      <ul class="popular-list row row-cols-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 gy-3">
+        <li v-for="movie in movies" :key="movie.id" style="list-style: none">
           <router-link 
             :to="{ name: 'movie', params: { moviePk: movie.id } }">
-            
             <img :src="getImgUrl(movie.poster_path)" alt="poster">
-            => {{ movie.title }}
+
           </router-link>
         </li>
       </ul>
@@ -37,7 +36,7 @@
 </script>
 
 <style>
-ul {
-  padding-left: 0;
+.poppular-list:hover {
+  padding: 1px;
 }
 </style>

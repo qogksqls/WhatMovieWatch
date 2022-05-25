@@ -2,30 +2,30 @@
   <nav>
     <ul class="ultag">
       <li class="litag">
-        <router-link :to="{ name: 'movies' }" style="color:beige">HOME</router-link>
+        <router-link :to="{ name: 'movies' }">HOME</router-link>
       </li>
       <li class="litag">
-        <router-link :to="{ name: 'articles' }" style="color:beige">영화 정보 게시판</router-link>
+        <router-link :to="{ name: 'articles' }">영화 정보 게시판</router-link>
       </li>
-      <li class="litag">
+      <!-- <li class="litag">
         <router-link :to="{ name: 'recommend' }">추천!</router-link>
-      </li>
+      </li> -->
       <li class="litag">
         <router-link :to="{ name: 'random' }">랜덤추천!</router-link>
       </li>      
       <li v-if="!isLoggedIn" class="litag">
-        <router-link :to="{ name: 'login' }" style="color:beige">Login</router-link>
+        <router-link :to="{ name: 'login' }">Login</router-link>
       </li>
       <li v-if="!isLoggedIn" class="litag">
-        <router-link :to="{ name: 'signup' }" style="color:beige">Signup</router-link>
+        <router-link :to="{ name: 'signup' }">Signup</router-link>
       </li>
       <li v-if="isLoggedIn" class="litag">
-        <router-link :to="{ name: 'profile', params: { username } }" style="color:beige">
+        <router-link :to="{ name: 'profile', params: { username } }">
           my page
         </router-link>
       </li>
       <li v-if="isLoggedIn" class="litag">
-        <router-link :to="{ name: 'logout' }" style="color:beige">Logout</router-link>
+        <router-link :to="{ name: 'logout' }">Logout</router-link>
       </li>
     </ul>
   </nav>
@@ -46,15 +46,31 @@
 </script>
 
 <style>
-nav {
-  background-color: tomato;
-}
 .ultag {
+  background-color: #FFDAB9;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
 }
 .litag {
-  margin-left: 20px;
-  list-style-type: none;
+  float: left;
+  cursor: pointer;
+}
+.litag a {
+  display: block;
+  background-color: #FFDAB9;
+  color: #000000;
+  padding: 8px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+}
+.litag a:hover:not(.current) {
+  background-color: #CD853F;
+  color: white;
 }
 </style>
