@@ -1,36 +1,37 @@
 <template>
-  <div>
-    <h1>{{ randomMovie.title }}</h1>
-    <div>
-      <img :src="getImgUrl(randomMovie.poster_path)" alt="poster">
+  <div class="movie-box">
+    <div class="movie-info">
+      <span style="font-size: 2.5rem;">
+        {{ movie.title }}
+        <p style="font-size: 10px; color: grey; margin: 0;">{{ movie.release_date.slice(0, 4) }}</p>
+          <div class="hr-sect"></div>
+        <p style="font-size: 13px; margin: 0;">관람객 {{ movie.vote_average}}</p>
+          <div class="hr-sect"></div>
+        <div style="font-size: 13px;">
+          <span style="font-weight: bold;">장르 </span>
+          <span v-for="genre in movie.genre_ids" :key="genre.id"> {{ genre.name }} |</span>
+        </div>
+        <div style="font-size: 13px;">
+          <span style="font-weight: bold;">개봉 </span>
+          <span> {{movie.release_date }}</span>
+        </div>
+          <div class="hr-sect"></div>
+        <div>
+          <div style="font-size: 15px; font-weight: bold;">줄거리</div>
+          <div style="font-size: 12px">{{ movie.overview }}</div>
+        </div>
+      </span>
+      <img :src="getImgUrl(movie.poster_path)" alt="poster" style="margin: 0 0 0 20px">
     </div>
-    <h2>
-      <div>
-        tmdb 평점: {{ randomMovie.vote_average}}
-      </div>
-      <div>
-        {{ randomMovie.vote_count }}명 참여
-      </div>
-      <div>
-        장르: {{ randomMovie.genre_ids}}
-      </div>
-      <div>
-        overview: {{ randomMovie.overview }}
-      </div>
-      <div>
-        원제목: {{ randomMovie.original_title }}
-      </div>
-      <div>
-        개봉일: {{ randomMovie.release_date}}
-      </div>
-    </h2>
-    <review-list :reviews="randomMovie.reviews"></review-list>
+        <div class="hr-sect"></div>
+    <review-list :reviews="movie.reviews"></review-list>
     <div>
-      <router-link :to="{ name: 'movies' }">
-        <button>Back</button>
+      <router-link :to="{ name: 'random' }">
+        <button class="btn btn-secondary">Back</button>
       </router-link>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -46,7 +47,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['randomMovie'])
+    ...mapGetters(['movie'])
   },
   methods: {
     ...mapActions(['fetchMovie']),
@@ -62,5 +63,33 @@ export default {
 </script>
 
 <style>
+.movie-box {
+  margin: 2rem;
+  padding: 2rem;
+  background-color: whitesmoke;
+}
+.movie-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hr-sect {
+	display: flex;
+
+
+	color: rgba(0, 0, 0, 0.35);
+	font-size: 12px;
+	margin: 8px 0px;
+}
+.hr-sect::before,
+.hr-sect::after {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+
+}
 
 </style>

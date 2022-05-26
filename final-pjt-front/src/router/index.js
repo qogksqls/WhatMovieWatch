@@ -17,6 +17,7 @@ import MovieListView from '@/views/movies/MovieListView'
 import MovieDetailView from '@/views/movies/MovieDetailView'
 
 import RandomView from '@/views/movies/RandomView'
+import RandomDetailView from '@/views/movies/RandomDetailView'
 
 Vue.use(VueRouter)
 
@@ -75,6 +76,11 @@ const routes = [
     path: '/movies/random',
     name: 'random',
     component: RandomView,
+  },
+  {
+    path: '/movies/random/:moviePk',
+    name: 'randommovie',
+    component: RandomDetailView,
   },
   {
     path: '/404',

@@ -1,7 +1,7 @@
 <template>
   <div class="cards-box">
     <div v-for="randomMovie in randomMovies" :key="randomMovie.id" style="margin: 10px;">
-      <router-link :to="{ name: 'movie', params: { moviePk: randomMovie.id } }">
+      <router-link :to="{ name: 'randommovie', params: { moviePk: randomMovie.id } }">
         <div>
           <img class="container" :src="getImgUrl(randomMovie.poster_path)" alt="poster" style="height: 18rem; width: 15rem;">
         </div>
