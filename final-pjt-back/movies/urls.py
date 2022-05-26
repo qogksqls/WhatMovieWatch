@@ -10,7 +10,6 @@ urlpatterns = [
     # reviews
     path('<int:movie_pk>/reviews/', views.create_review),
     path('<int:movie_pk>/reviews/<int:review_pk>/', views.review_update_or_delete),
+    # algo
     path('random/', views.random),
-    # path('<int:movie_pk>/genres/', views.genres),
-    # path('recommend/', views.recommend),
 ]

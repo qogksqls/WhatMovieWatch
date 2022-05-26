@@ -4,11 +4,10 @@ from django.db import models
 
 class Genre(models.Model):
     name = models.CharField(max_length=50)
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_genres')
 
 class Movie(models.Model):
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
-    genre_ids = models.ManyToManyField(Genre, related_name='movies')
+    genre_ids = models.ManyToManyField(Genre, related_name='genres')
 
     poster_path = models.CharField(max_length=200, blank=True, null=True)
     adult = models.BooleanField(null=True)
