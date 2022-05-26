@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1 class="font2">영화 정보 게시판</h1>
-      <div id="container" v-if="isLoggedIn" class="create-article font1">
+      <div style="background-color: rgb(239, 232, 227);" v-if="isLoggedIn" class="create-article font1">
         <router-link :to="{ name: 'articleNew' }" style="color: gray;">
-          <p style="margin-left: 5px">새 글을 작성해주세요!</p>
+          <p style="margin-left: 5px;">새 글을 작성해주세요!</p>
         </router-link>
       </div>
 
