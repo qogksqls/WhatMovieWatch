@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ profile.username }}</h1>
+    <img src="@/assets/익명이.png" alt="" style="width: 5rem; height: 5rem;"><h1>{{ profile.username }}</h1>
 
     <div class="my-articles">
       <h2>작성한 글</h2>

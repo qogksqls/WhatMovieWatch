@@ -59,7 +59,8 @@ import { mapActions } from 'vuex'
   margin-right: 32px;
 }
 .buttons {
-  display: flex;
+  float: right;
+  /* display: flex; */
   justify-content: end;
 }
 </style>

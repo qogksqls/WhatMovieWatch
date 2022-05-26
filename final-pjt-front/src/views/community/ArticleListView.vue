@@ -3,7 +3,7 @@
     <h1>영화 정보 게시판</h1>
     <div v-if="isLoggedIn" class="create-article">
       <router-link :to="{ name: 'articleNew' }" style="color: gray;">
-        <p>새 글을 작성해주세요!</p>
+        <p style="margin-left: 5px">새 글을 작성해주세요!</p>
       </router-link>
     </div>
     <ul>
@@ -11,19 +11,21 @@
         <!-- 글 이동 링크 (제목) -->
         <router-link 
           :to="{ name: 'article', params: {articlePk: article.pk} }">
-          <div class="title">
+          <div class="title" style="margin-left: 5px">
             {{ article.title }}
           </div>
-          <div class="content">
+          <div class="content" style="margin-left: 5px">
             {{ article.content}}
           </div>
-          <div class="remainder">
-            <span v-if="article.created_at === article.updated_at">{{ article.created_at.slice(0, 19) }}</span>
-            <span v-if="article.created_at !== article.updated_at">{{ article.updated_at.slice(0, 19) }}(수정됨)</span>
+          <div class="remainder" style="margin-left: 5px;">
+            <span v-if="article.created_at === article.updated_at">{{ article.created_at.slice(2, 10) + article.created_at.slice(11, 19) }}</span>
+            <span v-if="article.created_at !== article.updated_at">{{ article.updated_at.slice(2, 10) + " " + article.created_at.slice(11, 19) }} <span style="font-size: 2px;">(수정됨)</span> </span>
             
-            {{ article.user.username }}
-            ------------------
-            댓글 수: {{ article.comment_count }} | 좋아요: {{ article.like_count }}
+            <span>
+              {{ article.user.username }}
+              ------------------
+              댓글 수: {{ article.comment_count }} | 좋아요: {{ article.like_count }}
+            </span>
           </div>
         </router-link>
       </li>
@@ -48,7 +50,9 @@
   }
 </script>
 
-<style>
+<style scoped>
+ *{ font-family: 'Noto Sans KR', sans-serif;}
+ 
 h1 {
   color: rgb(5, 0, 2);
   display: flex;

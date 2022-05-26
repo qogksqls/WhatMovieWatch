@@ -4,19 +4,19 @@
       <img src="@/assets/익명이.png" alt="" style="width: 5rem; height: 5rem;">
       <span style="font-size: 25px">
         {{ article.user.username }} | 
-        <span v-if="article.created_at === article.updated_at">{{ article.created_at.slice(0, 10) }}</span>
-        <span v-if="article.created_at !== article.updated_at">{{ article.updated_at.slice(0, 10) }}(수정됨)</span>
+        <span v-if="article.created_at === article.updated_at" style="font-size: 16px">{{ article.created_at.slice(0, 10) }}</span>
+        <span v-if="article.created_at !== article.updated_at" style="font-size: 16px">{{ article.updated_at.slice(0, 10) }} (수정됨)</span>
       </span>
     </div>
     <div style="border: solid 1px; padding: 5px">
       <div class="title">
-        <h2 style="font-weight: bold;">{{ article.title }}</h2>
+        <h2 style="font-weight: bold; margin-left: 5px;">{{ article.title }}</h2>
         <div v-if="isAuthor">
           <router-link :to="{ name: 'articleEdit', params: { articlePk } }">
-            <button class="btn btn-primary">Edit</button>
+            <button class="btn btn-outline-primary bt-sm">Edit</button>
           </router-link>
           |
-          <button class="btn btn-warning" @click="deleteArticle(articlePk)">Delete</button>
+          <button class="btn btn-outline-danger bt-sm" @click="deleteArticle(articlePk)">Delete</button>
         </div>
       </div>
       <p>
@@ -24,15 +24,18 @@
       </p>
       <div>
         좋아요! : 
-        <button
-          @click="likeArticle(articlePk)"
-        >{{ likeCount }}</button>
+        <button @click="likeArticle(articlePk)">
+          <div v-if="likeCount"><img src="@/assets/best.gif" alt="best" style="width: 2rem; height: 2rem;">
+          {{ likeCount }}</div>
+          <div v-else>{{ likeCount }}</div>
+        </button>
       </div>
+
       <hr>
       <comment-list :comments="article.comments"></comment-list>
     </div>
     <router-link :to="{ name: 'articles' }">
-      <button class="btn btn-secondary">Back</button>
+      <button class="btn btn-secondary" style="margin-top: 4px;">Back</button>
     </router-link>
   </div>
 </template>
@@ -68,7 +71,9 @@
   }
 </script>
 
-<style>
+<style scoped>
+ *{ font-family: 'Noto Sans KR', sans-serif;}
+
 .article-detail {
   margin-left: 32px;
   margin-right: 32px;
