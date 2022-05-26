@@ -62,5 +62,9 @@ class Comment(models.Model):
 
 # 0526
 ## Back-end
+- 마지막으로 안쓰는 필드나 함수들 삭제
+
 
 ## Front-end
+- 전체적인 CSS 보강. 
+- 평점 edit 가능하게 수정
