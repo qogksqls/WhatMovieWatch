@@ -6,19 +6,14 @@ export default {
   state: {
     movies: [],
     movie: {},
-    //tinder(임시)
     randomMovies: [],
     randomMovie: {},
-    genres: [],
-
   },
 
   getters: {
     movies: state => state.movies,
     movie: state => state.movie,
     randomMovies: state => state.randomMovies,
-    genres: state => state.genres,
-
   },
 
   mutations: {

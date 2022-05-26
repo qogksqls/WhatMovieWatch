@@ -9,15 +9,16 @@
         <hr style="margin: 5px 0 5px">
         <div style="font-size: 13px;">
           <span style="font-weight: bold;">장르 </span>
-          <span> {{ movie.genre_ids }}</span>
+          <span v-for="genre in movie.genre_ids" :key="genre.id"> {{ genre.name }} |</span>
         </div>
         <div style="font-size: 13px;">
           <span style="font-weight: bold;">개봉 </span>
           <span> {{movie.release_date }}</span>
         </div>
-        <div class="overview">
-          <span style="font-size: 13px; font-weight: bold; width: 13rem;">줄거리 </span>
-          <span style="font-size: 10px">{{ movie.overview }}</span>
+        <hr style="margin: 5px 0 5px">
+        <div>
+          <div style="font-size: 15px; font-weight: bold;">줄거리</div>
+          <div style="font-size: 12px">{{ movie.overview }}</div>
         </div>
       </span>
       <img :src="getImgUrl(movie.poster_path)" alt="poster" style="margin: 0 0 0 20px">
@@ -67,10 +68,6 @@ export default {
   background-color: whitesmoke;
 }
 .movie-info {
-  display: flex;
-  justify-content: space-between;
-}
-.overview {
   display: flex;
   justify-content: space-between;
 }

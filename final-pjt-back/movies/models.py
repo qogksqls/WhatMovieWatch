@@ -8,7 +8,7 @@ class Genre(models.Model):
 
 class Movie(models.Model):
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
-    genre_ids = models.ManyToManyField(Genre)
+    genre_ids = models.ManyToManyField(Genre, related_name='movies')
 
     poster_path = models.CharField(max_length=200, blank=True, null=True)
     adult = models.BooleanField(null=True)
