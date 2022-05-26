@@ -65,6 +65,7 @@ export default {
   padding: 0.5em;
   border-radius: 4px;
   position: relative;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.19);
 }
 .test:before {
   -webkit-animation: sparkle 4s infinite linear;
@@ -82,5 +83,14 @@ export default {
   z-index: -1;
   transform: scale(0.99) translateY(3px);
 }
+.test:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.test:hover {
 
+  color: #ffffff;
+  opacity: 0.7;
+}
 </style>

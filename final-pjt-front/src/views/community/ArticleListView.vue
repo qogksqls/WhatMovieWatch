@@ -1,12 +1,13 @@
 <template>
   <div>
-    <h1>영화 정보 게시판</h1>
-    <div v-if="isLoggedIn" class="create-article">
-      <router-link :to="{ name: 'articleNew' }" style="color: gray;">
-        <p style="margin-left: 5px">새 글을 작성해주세요!</p>
-      </router-link>
-    </div>
-    <ul>
+    <h1 class="font2">영화 정보 게시판</h1>
+      <div id="container" v-if="isLoggedIn" class="create-article font1">
+        <router-link :to="{ name: 'articleNew' }" style="color: gray;">
+          <p style="margin-left: 5px">새 글을 작성해주세요!</p>
+        </router-link>
+      </div>
+
+    <ul class="font1">
       <li v-for="article in articles" :key="article.pk" class="article" style="list-style-type: none;">
         <!-- 글 이동 링크 (제목) -->
         <router-link 
@@ -18,7 +19,7 @@
             {{ article.content}}
           </div>
           <div class="remainder" style="margin-left: 5px;">
-            <span v-if="article.created_at === article.updated_at">{{ article.created_at.slice(2, 10) + article.created_at.slice(11, 19) }}</span>
+            <span v-if="article.created_at === article.updated_at">{{ article.created_at.slice(2, 10) + " " + article.created_at.slice(11, 19) }}</span>
             <span v-if="article.created_at !== article.updated_at">{{ article.updated_at.slice(2, 10) + " " + article.created_at.slice(11, 19) }} <span style="font-size: 2px;">(수정됨)</span> </span>
             
             <span>
@@ -51,7 +52,8 @@
 </script>
 
 <style scoped>
- *{ font-family: 'Noto Sans KR', sans-serif;}
+.font1 { font-family: 'Noto Sans KR', sans-serif;}
+.font2 { font-family: 'Black Han Sans', sans-serif;}
  
 h1 {
   color: rgb(5, 0, 2);

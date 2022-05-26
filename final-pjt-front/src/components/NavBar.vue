@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="header">
     <ul class="ultag">
       <li class="litag">
         <router-link :to="{ name: 'movies' }">HOME
@@ -50,6 +50,19 @@
 <style scoped>
  *{ font-family: 'Noto Sans KR', sans-serif;}
  
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.body {
+  padding-top: 75px;
+  /* 생략 */
+}
+
+
 .ultag {
   background-color: #FFDAB9;
   list-style-type: none;

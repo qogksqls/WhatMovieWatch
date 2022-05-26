@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>New Article</h1>
+    <h1 style="text-align: center;">New Article</h1>
     <article-form :article="article" action="create"></article-form>
   </div>
 </template>
@@ -22,4 +22,7 @@
   }
 </script>
 
-<style></style>
+<style scoped>
+ *{ font-family: 'Luckiest Guy', cursive;}
+ 
+ </style>

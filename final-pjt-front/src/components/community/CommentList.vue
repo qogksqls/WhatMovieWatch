@@ -26,7 +26,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+ *{ font-family: 'Noto Sans KR', sans-serif;}
 /* .comment-list {
   border: 1px solid ;
 } */
