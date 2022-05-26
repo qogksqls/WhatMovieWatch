@@ -16,8 +16,8 @@ import NotFound404 from '../views/accounts/NotFound404.vue'
 import MovieListView from '@/views/movies/MovieListView'
 import MovieDetailView from '@/views/movies/MovieDetailView'
 
-import RecommendView from '@/views/movies/RecommendView'
 import RandomView from '@/views/movies/RandomView'
+import RandomDetailView from '@/views/movies/RandomDetailView'
 
 Vue.use(VueRouter)
 
@@ -73,14 +73,14 @@ const routes = [
     component: MovieDetailView,
   },
   {
-    path: '/recommend',
-    name: 'recommend',
-    component: RecommendView,
-  },
-  {
     path: '/movies/random',
     name: 'random',
     component: RandomView,
+  },
+  {
+    path: '/movies/random/:moviePk',
+    name: 'randommovie',
+    component: RandomDetailView,
   },
   {
     path: '/404',

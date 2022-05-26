@@ -16,7 +16,6 @@
 <script>
 import CommentListItem from '@/components/community/CommentListItem.vue'
 import CommentListForm from '@/components/community/CommentListForm.vue'
-// import { mapGetters, mapActions } from 'vuex'
 
 
 export default {
@@ -28,7 +27,4 @@ export default {
 
 <style scoped>
  *{ font-family: 'Noto Sans KR', sans-serif;}
-/* .comment-list {
-  border: 1px solid ;
-} */
 </style>

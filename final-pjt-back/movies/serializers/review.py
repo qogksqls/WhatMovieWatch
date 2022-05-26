@@ -5,8 +5,6 @@ from ..models import Review
 
 User = get_user_model()
 
-# CUD => validation
-# R => Data serializing
 class ReviewSerializer(serializers.ModelSerializer):
     
     class UserSerializer(serializers.ModelSerializer):
