@@ -2,9 +2,7 @@
   <nav class="header">
     <ul class="ultag">
       <li class="litag">
-        <router-link :to="{ name: 'movies' }">HOME
-          <!-- <img src="@/assets/불독-마스코트-캐릭터.webp" alt="HOME" style="width: 12rem; height: 2rem;"> -->
-        </router-link>
+        <router-link :to="{ name: 'movies' }">홈</router-link>
       </li>
       <li class="litag">
         <router-link :to="{ name: 'articles' }">영화 정보 게시판</router-link>
@@ -55,12 +53,9 @@
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1;
 }
 
-.body {
-  padding-top: 75px;
-  /* 생략 */
-}
 
 
 .ultag {

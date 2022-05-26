@@ -2,8 +2,19 @@
 
   <div>
     <img class="box" src="@/assets/익명이.png" alt="" style="display: block; margin: 0px auto; width: 8rem; height: 8rem; border-radius: 40%;">
-    <h1 style="bubbles text-align: center; font-size: 65px;">{{ profile.username }}</h1>
-    <div class="my-articles">
+    <h1 style="text-align: center; font-size: 65px;">
+      {{ profile.username }}
+        <div class="center-outer">  
+          <div class="center-inner">
+
+            <div class="bubbles">
+              <h1>Bubbling Header</h1>
+            </div>
+
+          </div>
+        </div>
+      </h1>
+    <div class="my-articles" style="position: absolute">
       <h2 style="text-align: center; bubbles;">작성한 글</h2>
       <ul class="mylist">
         <li v-for="article in profile.articles" :key="article.pk" style="list-style: none">
@@ -107,7 +118,7 @@ position: relative;
 position: relative;
 margin: 1em 0 0;
 font-family: 'Luckiest Guy', cursive;
-color: #fff;
+color: #ffff;
 z-index: 2;
 }
 
@@ -115,7 +126,7 @@ z-index: 2;
 position: absolute;
 border-radius: 100%;
 bottom: 10px;
-background-color: #fff;
+background-color: #ffff;
 z-index: 1;
 }
 

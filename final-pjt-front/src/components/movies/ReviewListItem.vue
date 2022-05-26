@@ -9,12 +9,12 @@
     <span v-if="isEditing">
       <input type="text" v-model="payload.content">
       <button class="btn btn-primary" @click="onUpdate">Update</button> |
-      <button class="btn btn-secondary" @click="switchIsEditing">Cancle</button>
+      <button class="btn btn-secondary" @click="switchIsEditing">Cancel</button>
     </span>
 
     <span v-if="currentUser.username === review.user.username && !isEditing">
-      <button class="btn btn-primary" @click="switchIsEditing">수정</button> |
-      <button class="btn btn-warning" @click="deleteReview(payload)">삭제</button>
+      <button class="btn btn-outline-primary btn-sm" @click="switchIsEditing">Edit</button> |
+      <button class="btn btn-outline-danger btn-sm" @click="deleteReview(payload)">Delete</button>
     </span>
     <div>
       <router-link :to="{ name: 'profile', params: { username: review.user.username } }">
