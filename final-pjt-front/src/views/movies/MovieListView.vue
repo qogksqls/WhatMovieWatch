@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>POPULAR MOVIE RANKING</h1>
+    <h1 style="text-align: center;">POPULAR MOVIE RANKING</h1>
     <div>
       <ul class="popular-list row row-cols-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6 gy-3">
         <li v-for="movie in movies" :key="movie.id" style="list-style: none">

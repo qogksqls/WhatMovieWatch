@@ -41,11 +41,6 @@ export default {
   margin-left: auto;
 }
 
-body {
-  padding: 60px;
-  background: #f3f3f3;
-  min-height: 100vh;
-}
 
 @-webkit-keyframes sparkle {
   from {
