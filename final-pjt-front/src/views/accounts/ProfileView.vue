@@ -2,21 +2,14 @@
 
   <div>
     <img class="box" src="@/assets/익명이.png" alt="" style="display: block; margin: 0px auto; width: 8rem; height: 8rem; border-radius: 40%;">
-    <h1 style="text-align: center; font-size: 65px;">
-      {{ profile.username }}
-        <!-- <div class="center-outer">  
-          <div class="center-inner">
-            <div class="bubbles">
-              <h1>Bubbling Header</h1>
-            </div>
-          </div>
-        </div> -->
-      </h1>
-    <div class="my-articles" style="position: absolute">
-      <h2 style="text-align: center; bubbles;">작성한 글</h2>
-      <ul class="mylist">
-        <li v-for="article in profile.articles" :key="article.pk" style="list-style: none">
-          <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
+    <h1 style="text-align: center; font-size: 65px;">{{ profile.username }}</h1>
+    <div class="my-articles">
+      <h2 style="text-align: center;">작성한 글</h2>
+      <ul style="text-align: left; margin-left: 25%">
+
+        <li v-for="article in profile.articles" :key="article.pk" style="list-style: none;">
+         <img src="@/assets/mandarin.png" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
+          <router-link style="color: grey; text-shadow:0px 0.5px 0.5px rgb(68, 60, 60);" :to="{ name: 'article', params: { articlePk: article.pk } }">
             {{ article.title }}
           </router-link>
         </li>
@@ -24,9 +17,10 @@
     </div>
     <div class="like-it">
       <h2 style="text-align: center;">좋아요를 누른 글</h2>
-      <ul class="mylist">
+      <ul style="text-align: left; margin-left: 25%">
         <li v-for="article in profile.like_articles" :key="article.pk" style="list-style: none">
-          <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
+         <img src="@/assets/mandarin.png" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
+          <router-link style="color: grey; text-shadow:0px 0.5px 0.5px rgb(68, 60, 60);" :to="{ name: 'article', params: { articlePk: article.pk } }">
             {{ article.title }}
           </router-link>
         </li>
@@ -37,32 +31,32 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import $ from 'jquery'
+// import $ from 'jquery'
 
- $(document).ready(function(){
+//  $(document).ready(function(){
  
-    var bArray = [];
-    var sArray = [4,6,8,10];
+//     var bArray = [];
+//     var sArray = [4,6,8,10];
  
-    for (var i = 0; i < $('.bubbles').width(); i++) {
-        bArray.push(i);
-    }
-    function randomValue(arr) {
-        return arr[Math.floor(Math.random() * arr.length)];
-    }
+//     for (var i = 0; i < $('.bubbles').width(); i++) {
+//         bArray.push(i);
+//     }
+//     function randomValue(arr) {
+//         return arr[Math.floor(Math.random() * arr.length)];
+//     }
  
-    setInterval(function(){
-        var size = randomValue(sArray);
-        $('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
-        $('.individual-bubble').animate({
-            'bottom': '100%',
-            'opacity' : '-=0.7'
-        }, 3000, function(){
-            $(this).remove()
-        }
-        );
-    }, 350);
-})
+//     setInterval(function(){
+//         var size = randomValue(sArray);
+//         $('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
+//         $('.individual-bubble').animate({
+//             'bottom': '100%',
+//             'opacity' : '-=0.7'
+//         }, 3000, function(){
+//             $(this).remove()
+//         }
+//         );
+//     }, 350);
+// })
 
 export default {
   name: 'ProfileView',
@@ -81,7 +75,7 @@ export default {
 
 <style scoped>
  *{ font-family: 'Single Day', sans-serif; font-weight: bold;}
-
+/* 
 html, body {
 width: 100%;
 height: 100%;
@@ -99,8 +93,6 @@ display: table-cell;
 vertical-align: middle;
 text-align: center;
 }
-
-/* Essential CSS - Makes the effect work */
 
 body {
 background-color: #3498db;
@@ -126,7 +118,7 @@ border-radius: 100%;
 bottom: 10px;
 background-color: #ffff;
 z-index: 1;
-}
+} */
 
 h1 {
   text-align: center;
@@ -186,5 +178,7 @@ ol.mylist li:before {
         transform: translateX(calc(-32px / 5.5)) rotate(calc(-10deg / 5));
     }
 }
+
+
 
 </style>

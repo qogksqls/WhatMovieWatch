@@ -11,8 +11,8 @@
         평점: <input type="number" v-model.number="payload.vote" min="1" max="10">
       </div>
       <input type="text" v-model="payload.content">
-      <button class="btn btn-primary" @click="onUpdate">Update</button> |
-      <button class="btn btn-secondary" @click="switchIsEditing">Cancel</button>
+      <button class="btn btn-outline-primary btn-sm" style="margin-left: 5px;" @click="onUpdate">Update</button> |
+      <button class="btn btn-outline-secondary btn-sm" @click="switchIsEditing">Cancel</button>
     </span>
 
     <span v-if="currentUser.username === review.user.username && !isEditing">

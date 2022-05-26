@@ -27,7 +27,7 @@ def movie_detail(request, movie_pk):
 
 @api_view(['GET'])
 def random(request):
-    movies = Movie.objects.order_by('?')[:10]
+    movies = Movie.objects.order_by('?')[:12]
     serializer = MovieRandomSerializer(movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
