@@ -4,15 +4,13 @@
     <img class="box" src="@/assets/익명이.png" alt="" style="display: block; margin: 0px auto; width: 8rem; height: 8rem; border-radius: 40%;">
     <h1 style="text-align: center; font-size: 65px;">
       {{ profile.username }}
-        <div class="center-outer">  
+        <!-- <div class="center-outer">  
           <div class="center-inner">
-
             <div class="bubbles">
               <h1>Bubbling Header</h1>
             </div>
-
           </div>
-        </div>
+        </div> -->
       </h1>
     <div class="my-articles" style="position: absolute">
       <h2 style="text-align: center; bubbles;">작성한 글</h2>

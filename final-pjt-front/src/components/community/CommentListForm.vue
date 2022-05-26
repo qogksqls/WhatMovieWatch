@@ -36,7 +36,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .flex-item-gnb {
   margin-left: auto;
 }
