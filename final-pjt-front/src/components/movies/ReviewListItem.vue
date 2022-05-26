@@ -1,12 +1,15 @@
 <template>
   <li class="review-list-item" style="list-style: none;">
-    <div>
+    <div v-if="!isEditing">
       평점: {{ review.vote }}점
     </div>
     <span v-if="!isEditing">
       {{ payload.content }}
     </span>
     <span v-if="isEditing">
+      <div>
+        평점: <input type="number" v-model.number="payload.vote" min="1" max="10">
+      </div>
       <input type="text" v-model="payload.content">
       <button class="btn btn-primary" @click="onUpdate">Update</button> |
       <button class="btn btn-secondary" @click="switchIsEditing">Cancel</button>

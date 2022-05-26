@@ -88,8 +88,8 @@ export default {
         .catch(err => console.error(err.response))
     },
 
-    updateReview({ commit, getters }, { moviePk, reviewPk, content }) {
-      const review = { content }
+    updateReview({ commit, getters }, { moviePk, reviewPk, content, vote }) {
+      const review = { content, vote }
 
       axios({
         url: drf.movies.review(moviePk, reviewPk),
