@@ -8,19 +8,25 @@
     </span>
     <span v-if="isEditing">
       <input type="text" v-model="payload.content">
-      <button @click="onUpdate">Update</button> |
-      <button @click="switchIsEditing">Cancle</button>
+      <button class="btn btn-primary" @click="onUpdate">Update</button> |
+      <button class="btn btn-secondary" @click="switchIsEditing">Cancle</button>
     </span>
 
     <span v-if="currentUser.username === review.user.username && !isEditing">
-      <button @click="switchIsEditing">Edit</button> |
-      <button @click="deleteReview(payload)">Delete</button>
+      <button class="btn btn-primary" @click="switchIsEditing">수정</button> |
+      <button class="btn btn-warning" @click="deleteReview(payload)">삭제</button>
     </span>
     <div>
       <router-link :to="{ name: 'profile', params: { username: review.user.username } }">
         {{ review.user.username }}
       </router-link>
-      | {{ review.created_at.slice(0, 19) }} | 신고
+      <span v-if="review.created_at === review.updated_at">
+        | {{ review.created_at.slice(2, 10) }} {{ review.created_at.slice(11, 19)}} | 신고
+      </span>
+      <span v-if="review.created_at !== review.updated_at">
+        | {{ review.updated_at.slice(2, 10) }} {{ review.updated_at.slice(11, 19)}} (수정됨) | 신고
+      </span>
+      
     </div>
   </li>
 </template>
@@ -39,8 +45,6 @@ export default {
         reviewPk: this.review.pk,
         content: this.review.content,
         vote: this.review.vote
-        // created_at: this.comment.created_at.slice(0, 19),
-        // updated_at: this.comment.updated_at.slice(0, 19),
       },
     }
   },
@@ -62,8 +66,8 @@ export default {
 
 <style>
 .review-list-item {
-  border: 1px solid slategray;
-  margin: 10px;
+  border: 1px solid rgb(234, 226, 226);
+  margin-bottom: 3px;
   padding: 10px;
 }
 </style>
