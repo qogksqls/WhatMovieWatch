@@ -2,7 +2,9 @@
   <nav class="header">
     <ul class="ultag">
       <li class="litag">
-        <router-link :to="{ name: 'movies' }">홈</router-link>
+        <router-link :to="{ name: 'movies' }">HOME
+          <!-- <img src="@/assets/불독-마스코트-캐릭터.webp" alt="HOME" style="width: 12rem; height: 2rem;"> -->
+        </router-link>
       </li>
       <li class="litag">
         <router-link :to="{ name: 'articles' }">영화 정보 게시판</router-link>

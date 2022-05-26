@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h3>리뷰</h3>
-    <ul>
+    <ul style="padding: 0;">
       <review-list-form></review-list-form>
       
       <review-list-item

@@ -5,8 +5,8 @@
         평점: <input type="number" min="1" max="10" placeholder="1" v-model="vote" required>
       </div>
         <label for="review"></label>
-        <input type="text" placeholder="감상평을 등록해주세요." v-model="content" required>
-      <button>등록</button>
+        <input type="text" style="width: 85%" placeholder="감상평을 등록해주세요." v-model="content" required> |
+      <button class="btn btn-primary">등록</button>
     </form>
   </div>
 </template>
@@ -42,8 +42,7 @@ export default {
 
 <style>
 .review-list-form {
-  border: 1px solid black;
-  margin: 1rem;
-  padding: 1rem;
+  border: 1px solid whitesmoke;
+  width: 100%
 }
 </style>

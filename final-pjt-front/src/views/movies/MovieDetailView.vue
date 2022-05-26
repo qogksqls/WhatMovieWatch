@@ -1,36 +1,32 @@
 <template>
-  <div>
-    <h1>{{ movie.title }}</h1>
-    <div>
-      <img :src="getImgUrl(movie.poster_path)" alt="poster">
+  <div class="movie-box">
+    <div class="movie-info">
+      <span style="font-size: 2.5rem;">
+        {{ movie.title }}
+        <p style="font-size: 10px; color: grey; margin: 0;">{{ movie.release_date.slice(0, 4) }}</p>
+        <hr style="margin: 5px 0 5px">
+        <p style="font-size: 13px; margin: 0;">관람객 {{ movie.vote_average}}</p>
+        <hr style="margin: 5px 0 5px">
+        <div style="font-size: 13px;">
+          <span style="font-weight: bold;">장르 </span>
+          <span> {{ movie.genre_ids }}</span>
+        </div>
+        <div style="font-size: 13px;">
+          <span style="font-weight: bold;">개봉 </span>
+          <span> {{movie.release_date }}</span>
+        </div>
+        <div class="overview">
+          <span style="font-size: 13px; font-weight: bold; width: 13rem;">줄거리 </span>
+          <span style="font-size: 10px">{{ movie.overview }}</span>
+        </div>
+      </span>
+      <img :src="getImgUrl(movie.poster_path)" alt="poster" style="margin: 0 0 0 20px">
     </div>
-    <h2>
-      <div>
-        tmdb 평점: {{ movie.vote_average}}
-      </div>
-      <div>
-        {{ movie.vote_count }}명 참여
-      </div>
-      <div>
-        {{ movie.popularity}}
-      </div>
-      <div>
-        장르: {{ movie.genre_ids}}
-      </div>
-      <div>
-        overview: {{ movie.overview }}
-      </div>
-      <div>
-        원제목: {{ movie.original_title }}
-      </div>
-      <div>
-        개봉일: {{ movie.release_date}}
-      </div>
-    </h2>
+    <hr>
     <review-list :reviews="movie.reviews"></review-list>
     <div>
       <router-link :to="{ name: 'movies' }">
-        <button>Back</button>
+        <button class="btn btn-secondary">Back</button>
       </router-link>
     </div>
   </div>
@@ -65,5 +61,17 @@ export default {
 </script>
 
 <style>
-
+.movie-box {
+  margin: 2rem;
+  padding: 2rem;
+  background-color: whitesmoke;
+}
+.movie-info {
+  display: flex;
+  justify-content: space-between;
+}
+.overview {
+  display: flex;
+  justify-content: space-between;
+}
 </style>
